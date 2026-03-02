@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — LiTerrific Professional Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --charcoal:   #1a1f2e;
+    --teal:       #1a8f8a;
+    --teal-dark:  #136e6a;
+    --teal-light: #e6f5f4;
+    --tan:        #c8b99a;
+    --tan-light:  #f5f0e8;
+    --off-white:  #f8f8f6;
+    --gray-light: #f0f0ee;
+    --gray-border:#e0e0dd;
+    --text:       #1a1a1a;
+    --muted:      #6b7280;
+    --white:      #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Geologica', sans-serif;
+    font-weight: 400;
+    background: var(--off-white);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 68px;
+  }
+  .nav-logo {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--charcoal);
+    text-decoration: none;
+    letter-spacing: -.01em;
+    line-height: 1.2;
+  }
+  .nav-logo span { color: var(--teal); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Geologica', sans-serif;
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    text-decoration: none;
+    transition: color .15s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal);
+    color: var(--white) !important;
+    padding: .55rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: background .15s !important;
+  }
+  .nav-cta:hover { background: var(--teal-dark) !important; }
+
+  /* ── Main layout ── */
+  main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    max-width: 1100px;
+    margin: 4rem auto;
+    width: 100%;
+    padding: 0 2rem;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* ── Left column ── */
+  .contact-info {
+    position: sticky;
+    top: 96px;
+  }
+  .section-label {
+    display: inline-block;
+    font-family: 'Geologica', sans-serif;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    background: var(--teal-light);
+    padding: .3rem .85rem;
+    border-radius: 100px;
+    margin-bottom: 1.1rem;
+  }
+  .contact-info h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .contact-info h1 em { font-style: italic; color: var(--teal); }
+  .contact-info .lead {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: .85rem;
+  }
+  .detail-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--teal-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .contact-detail p {
+    font-size: .9rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .contact-detail strong {
+    display: block;
+    font-size: .88rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: .15rem;
+  }
+  .contact-detail a {
+    color: var(--teal);
+    text-decoration: none;
+  }
+  .contact-detail a:hover { text-decoration: underline; }
+
+  .promise-box {
+    margin-top: 2.5rem;
+    background: var(--tan-light);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border-left: 3px solid var(--tan);
+  }
+  .promise-box p {
+    font-family: 'Quattrocento', serif;
+    font-style: italic;
+    font-size: .92rem;
+    color: var(--charcoal);
+    line-height: 1.7;
+  }
+  .promise-box .attr {
+    display: block;
+    margin-top: .65rem;
+    font-family: 'Geologica', sans-serif;
+    font-style: normal;
+    font-size: .78rem;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  /* ── Right column — Form ── */
+  .form-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2.75rem 2.5rem;
+    border: 1px solid var(--gray-border);
+    box-shadow: 0 4px 24px rgba(0,0,0,.06);
+  }
+  .form-card h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 2rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    margin-bottom: 1.25rem;
+  }
+  label {
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 100%;
+    padding: .75rem 1rem;
+    border: 1.5px solid var(--gray-border);
+    border-radius: 8px;
+    font-family: 'Geologica', sans-serif;
+    font-size: .92rem;
+    color: var(--text);
+    background: var(--off-white);
+    outline: none;
+    transition: border-color .15s, box-shadow .15s, background .15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(26,143,138,.12);
+    background: var(--white);
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+  textarea { resize: vertical; min-height: 110px; }
+
+  /* Checkboxes */
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+  }
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    cursor: pointer;
+  }
+  .checkbox-row input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--gray-border);
+    border-radius: 4px;
+    background: var(--off-white);
+    cursor: pointer;
+    flex-shrink: 0;
+    accent-color: var(--teal);
+  }
+  .checkbox-row span {
+    font-size: .9rem;
+    color: var(--text);
+  }
+
+  /* Submit */
+  .form-submit-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: .5rem;
+  }
+  .form-note {
+    font-size: .8rem;
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 260px;
+  }
+  .btn-submit {
+    padding: .9rem 2.25rem;
+    background: var(--teal);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-family: 'Geologica', sans-serif;
+    font-size: .95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s, transform .1s;
+    white-space: nowrap;
+  }
+  .btn-submit:hover { background: var(--teal-dark); transform: translateY(-1px); }
+  .btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+  /* Success state */
+  .success-message {
+    display: none;
+    text-align: center;
+    padding: 3rem 1rem;
+    animation: fadeUp .4s ease both;
+  }
+  .success-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin: 0 auto 1.25rem;
+  }
+  .success-message h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: .65rem;
+  }
+  .success-message p {
+    font-size: .95rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--white);
+    border-top: 1px solid var(--gray-border);
+    padding: 2.5rem 2rem;
+    margin-top: 4rem;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+  .footer-logo {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--charcoal);
+    text-decoration: none;
+  }
+  .footer-logo span { color: var(--teal); }
+  .footer-links {
+    display: flex;
+    gap: 1.75rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    font-size: .85rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .15s;
+  }
+  .footer-links a:hover { color: var(--charcoal); }
+  .footer-copy {
+    font-size: .8rem;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 860px) {
+    main {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin: 2.5rem auto;
+    }
+    .contact-info { position: static; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1.25rem; }
+    .nav-links li:not(:last-child) { display: none; }
+    main { padding: 0 1.25rem; margin: 2rem auto; }
+    .form-card { padding: 2rem 1.5rem; }
+    .form-submit-row { flex-direction: column; align-items: stretch; }
+    .btn-submit { width: 100%; text-align: center; }
+    .form-note { max-width: 100%; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-copy { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="index.html" class="nav-logo">LiTerrific <span>Professional Development</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="index.html#approach">About</a></li>
+    <li><a href="contact.html" class="nav-cta">Book a Call →</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- Left: Info -->
+  <div class="contact-info">
+    <span class="section-label">Get in Touch</span>
+    <h1>Let's Talk About <em>Your District</em></h1>
+    <p class="lead">Tell us about your teachers, your goals, and your timeline. We'll follow up within one business day to schedule a conversation and build a proposal tailored to your needs.</p>
+
+    <div class="contact-details">
+      <div class="contact-detail">
+        <div class="detail-icon">📧</div>
+        <div>
+          <strong>Email</strong>
+          <p><a href="mailto:info@literrific.com">info@literrific.com</a></p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="detail-icon">🌐</div>
+        <div>
+          <strong>Website</strong>
+          <p><a href="https://ptnmanagement.com" target="_blank">ptnmanagement.com</a></p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="detail-icon">🗺️</div>
+        <div>
+          <strong>Service Area</strong>
+          <p>Available nationwide — virtual sessions anywhere, on-site training by arrangement.</p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="detail-icon">⏱️</div>
+        <div>
+          <strong>Response Time</strong>
+          <p>We respond to all inquiries within one business day.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="promise-box">
+      <p>"We don't believe in one-size-fits-all professional development. Every proposal we write starts with a conversation about your teachers, your students, and your goals."
+        <span class="attr">LiTerrific Professional Development</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Right: Form -->
+  <div class="form-card">
+    <h2>Request a Quote or Book a Call</h2>
+
+    <div id="form-wrap">
+      <form id="contact-form" action="https://formspree.io/f/PLACEHOLDER" method="POST">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="role">Role / Title</label>
+            <input type="text" id="role" name="role" placeholder="Curriculum Director">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="district">School or District</label>
+            <input type="text" id="district" name="district" placeholder="Springfield USD" required>
+          </div>
+          <div class="form-group">
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" placeholder="e.g. Ohio">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@district.edu" required>
+        </div>
+
+        <div class="form-group">
+          <label>Grade Levels Served</label>
+          <div class="checkbox-group">
+            <label class="checkbox-row">
+              <input type="checkbox" name="grades" value="PreK-2"> <span>PreK – 2nd Grade</span>
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" name="grades" value="3-5"> <span>3rd – 5th Grade</span>
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" name="grades" value="6-8"> <span>6th – 8th Grade</span>
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" name="grades" value="9-12"> <span>9th – 12th Grade</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Service Interest</label>
+          <div class="checkbox-group">
+            <label class="checkbox-row">
+              <input type="checkbox" name="services" value="virtual"> <span>Virtual Workshops</span>
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" name="services" value="onsite"> <span>On-Site Training</span>
+            </label>
+            <label class="checkbox-row">
+              <input type="checkbox" name="services" value="coaching"> <span>Ongoing Coaching</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="teachers">Estimated Number of Teachers</label>
+          <select id="teachers" name="teachers">
+            <option value="" disabled selected>Select a range</option>
+            <option value="<10">Fewer than 10</option>
+            <option value="10-50">10 – 50</option>
+            <option value="51-200">51 – 200</option>
+            <option value="200+">More than 200</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Anything else we should know?</label>
+          <textarea id="message" name="message" placeholder="Your current curriculum, timeline, specific challenges, or any questions for us..."></textarea>
+        </div>
+
+        <div class="form-submit-row">
+          <p class="form-note">We'll follow up within one business day. No pressure, no sales pitch.</p>
+          <button type="submit" class="btn-submit" id="submit-btn">Send Inquiry →</button>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="success-message" id="success-message">
+      <div class="success-icon">✓</div>
+      <h3>We've got your message!</h3>
+      <p>Thank you for reaching out. We'll be in touch within one business day to set up a conversation.</p>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">LiTerrific <span>Professional Development</span></a>
+    <ul class="footer-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://literrific.com" target="_blank">LiTerrific →</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 LiTerrific Professional Development<br>ptnmanagement.com · info@literrific.com</p>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const formWrap = document.getElementById('form-wrap');
+  const successMessage = document.getElementById('success-message');
+  const submitBtn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        formWrap.style.display = 'none';
+        successMessage.style.display = 'block';
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Inquiry →';
+        alert('Something went wrong. Please try emailing us directly at info@literrific.com');
+      }
+    } catch {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Inquiry →';
+      alert('Something went wrong. Please try emailing us directly at info@literrific.com');
+    }
+  });
+</script>
+
+</body>
+</html>
