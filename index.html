@@ -284,6 +284,83 @@
   }
   .service-link:hover { gap: .55rem; }
 
+  /* ── Research Partner ── */
+  .expert { background: var(--white); }
+  .expert-grid {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .expert-photo-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    box-shadow: 0 8px 40px rgba(0,0,0,.12);
+  }
+  .expert-photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .expert-photo-badge {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    right: 1.25rem;
+    background: rgba(26,31,46,.82);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    padding: .85rem 1.1rem;
+    color: var(--white);
+  }
+  .expert-photo-badge strong {
+    display: block;
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: .15rem;
+  }
+  .expert-photo-badge span {
+    font-size: .8rem;
+    color: rgba(255,255,255,.72);
+    line-height: 1.4;
+  }
+  .expert-content { }
+  .expert-content h2 { margin-bottom: .85rem; }
+  .expert-bio {
+    font-size: .97rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 1.75rem;
+  }
+  .expert-creds {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .65rem;
+    margin-bottom: 2rem;
+  }
+  .expert-creds li {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    font-size: .9rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .expert-creds li::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+  }
+
   /* ── Our Approach ── */
   .approach { background: var(--tan-light); }
   .approach-grid {
@@ -576,6 +653,8 @@
   /* ── Responsive ── */
   @media (max-width: 900px) {
     .services-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    .expert-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .expert-photo-wrap { max-width: 380px; margin: 0 auto; }
     .approach-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .approach-visual { order: -1; }
     .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
@@ -679,6 +758,35 @@
   </div>
 </section>
 
+<!-- Research Partner -->
+<section class="expert">
+  <div class="container">
+    <div class="expert-grid">
+      <div class="expert-photo-wrap">
+        <img src="images/chase-young.avif" alt="Dr. Chase Young">
+        <div class="expert-photo-badge">
+          <strong>Dr. Chase Young</strong>
+          <span>Research Partner · PhD, Literacy Education</span>
+        </div>
+      </div>
+      <div class="expert-content">
+        <span class="section-label">Research Partner</span>
+        <h2>The Science Behind<br><em>Every Session</em></h2>
+        <p class="expert-bio">LiTerrific Professional Development is built on more than good intentions — it's built on research. Dr. Chase Young brings deep expertise in structured literacy, reading science, and evidence-based instructional practice to every program we design and deliver.</p>
+        <p class="expert-bio">With a PhD in Literacy Education and years of experience working alongside teachers, coaches, and district leaders, Dr. Young ensures that our PD is not just engaging — it's grounded in what the science actually says about how children learn to read.</p>
+        <ul class="expert-creds">
+          <li>PhD, Literacy Education</li>
+          <li>Published researcher in early reading and structured literacy</li>
+          <li>Former classroom teacher and literacy coach</li>
+          <li>Advisor on Science of Reading implementation for districts nationwide</li>
+          <li>Program Director, LiTerrific Certified Curriculum</li>
+        </ul>
+        <a href="contact.html" class="btn-primary">Work With Us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Our Approach -->
 <section class="approach" id="approach">
   <div class="container">
@@ -719,15 +827,11 @@
         </div>
       </div>
       <div class="approach-visual">
+        <img src="images/chase-young.avif" alt="Dr. Chase Young" style="width:110px;height:110px;border-radius:50%;object-fit:cover;object-position:center top;display:block;margin:0 auto 1rem;border:4px solid var(--teal-light);box-shadow:0 4px 16px rgba(0,0,0,.1);">
+        <p style="font-family:'Lora',serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);text-align:center;margin-bottom:.2rem;">Dr. Chase Young</p>
+        <p style="font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);text-align:center;margin-bottom:1.5rem;">Research Partner · LiTerrific PD</p>
         <div class="teal-bar"></div>
-        <p class="big-quote">"The research is clear — structured literacy instruction, implemented well, changes outcomes for students. Our job is to make that implementation possible for every teacher."</p>
-        <div style="display:flex;align-items:center;gap:.85rem;justify-content:center;margin-top:1.25rem;">
-          <img src="images/chase-young.avif" alt="Dr. Chase Young" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;">
-          <div style="text-align:left;">
-            <p style="font-size:.88rem;font-weight:600;color:var(--charcoal);font-style:normal;margin-bottom:.1rem;">Dr. Chase Young</p>
-            <p class="quote-attr" style="margin:0;">Research Partner · LiTerrific PD</p>
-          </div>
-        </div>
+        <p class="big-quote" style="margin-top:1.25rem;">"The research is clear — structured literacy instruction, implemented well, changes outcomes for students. Our job is to make that implementation possible for every teacher."</p>
       </div>
     </div>
   </div>
