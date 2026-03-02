@@ -79,6 +79,30 @@
   }
   .nav-cta:hover { background: var(--teal-dark) !important; color: var(--white) !important; }
 
+  /* ── Photo strip ── */
+  .photo-strip {
+    width: 100%;
+    height: 38vh;
+    overflow: hidden;
+  }
+  .photo-strip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 38%;
+    display: block;
+  }
+
+  /* ── Service card image ── */
+  .service-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+
   /* ── Sections shared ── */
   section { padding: 5rem 2rem; }
   .container { max-width: 1100px; margin: 0 auto; }
@@ -596,6 +620,11 @@
   </div>
 </section>
 
+<!-- Photo Strip -->
+<div class="photo-strip">
+  <img src="https://cdn.prod.website-files.com/67aa1ce20d7dede8a38e75c8/67aa1ce20d7dede8a38e7680_dc1eb67ba02293cf5b1e64df0f8ddd27_portfolio%202%20-%20wide.avif" alt="Children reading together in a classroom" loading="lazy">
+</div>
+
 <!-- Stats -->
 <div class="stats">
   <div class="stats-grid">
@@ -623,6 +652,7 @@
     <div class="services-grid">
 
       <div class="service-card">
+        <img class="service-img" src="https://cdn.prod.website-files.com/67aa1ce20d7dede8a38e75c8/6809c37b14e8200c3c5487c6_pexels-gustavo-fring-5621944.avif" alt="Teacher helping students at a computer" loading="lazy">
         <div class="service-icon">💻</div>
         <h3>Virtual Workshops</h3>
         <p>Live, interactive online sessions for teacher teams — no travel required. Cover phonemic awareness, phonics, fluency, vocabulary, and comprehension through guided practice and real classroom application.</p>
@@ -630,6 +660,7 @@
       </div>
 
       <div class="service-card">
+        <img class="service-img" src="https://cdn.prod.website-files.com/67aa1ce20d7dede8a38e75c8/6809c37bd0857fcf623bba21_pexels-yankrukov-8613082.avif" alt="Teacher reading with children" loading="lazy">
         <div class="service-icon">🏫</div>
         <h3>On-Site Training</h3>
         <p>We come to you. Full-day and multi-day PD experiences at your school or district offices — designed around your teachers' schedules, grade bands, and current instructional challenges.</p>
@@ -637,6 +668,7 @@
       </div>
 
       <div class="service-card">
+        <img class="service-img" src="https://cdn.prod.website-files.com/67aa1ce20d7dede8a38e75c8/6809c37ba2000ddb005e23b0_pexels-thirdman-8926887.avif" alt="Students reading together" loading="lazy">
         <div class="service-icon">🤝</div>
         <h3>Ongoing Coaching</h3>
         <p>Sustained support that sticks. Monthly or bi-monthly coaching cycles with individual teachers or grade-level teams — combining observation, modeling, and reflection to build lasting instructional capacity.</p>
@@ -689,7 +721,13 @@
       <div class="approach-visual">
         <div class="teal-bar"></div>
         <p class="big-quote">"The research is clear — structured literacy instruction, implemented well, changes outcomes for students. Our job is to make that implementation possible for every teacher."</p>
-        <p class="quote-attr">LiTerrific Professional Development</p>
+        <div style="display:flex;align-items:center;gap:.85rem;justify-content:center;margin-top:1.25rem;">
+          <img src="https://cdn.prod.website-files.com/67aa1ce20d7dede8a38e75c8/680677e1f24436105ff6366b_Chase_Young-picture.avif" alt="Dr. Chase Young" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+          <div style="text-align:left;">
+            <p style="font-size:.88rem;font-weight:600;color:var(--charcoal);font-style:normal;margin-bottom:.1rem;">Dr. Chase Young</p>
+            <p class="quote-attr" style="margin:0;">Research Partner · LiTerrific PD</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
