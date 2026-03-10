@@ -7,17 +7,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --charcoal:   #1a1f2e;
-    --teal:       #1a8f8a;
-    --teal-dark:  #136e6a;
-    --teal-light: #e6f5f4;
+    --charcoal:   #161616;
+    --teal:       #01826d;
+    --teal-dark:  #005e4f;
+    --teal-light: #dbfff9;
+    --gold:       #ffc300;
+    --gold-light: #fff8e2;
     --tan:        #c8b99a;
     --tan-light:  #f5f0e8;
-    --off-white:  #f8f8f6;
+    --off-white:  #f6f6f6;
     --gray-light: #f0f0ee;
     --gray-border:#e0e0dd;
     --text:       #1a1a1a;
-    --muted:      #6b7280;
+    --muted:      #5d6c7b;
     --white:      #ffffff;
   }
 
@@ -36,8 +38,8 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--white);
-    border-bottom: 1px solid var(--gray-border);
+    background: var(--charcoal);
+    border-bottom: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -48,7 +50,7 @@
     font-family: 'Lora', serif;
     font-weight: 700;
     font-size: 1.15rem;
-    color: var(--charcoal);
+    color: var(--white);
     text-decoration: none;
     letter-spacing: -.01em;
     line-height: 1.2;
@@ -64,11 +66,11 @@
     font-family: 'Geologica', sans-serif;
     font-size: .9rem;
     font-weight: 500;
-    color: var(--charcoal);
+    color: rgba(255,255,255,.75);
     text-decoration: none;
     transition: color .15s;
   }
-  .nav-links a:hover { color: var(--teal); }
+  .nav-links a:hover { color: var(--white); }
   .nav-links a.active { color: var(--teal); }
   .nav-cta {
     background: var(--teal);
@@ -306,6 +308,7 @@
     <li><a href="index.html#services">Services</a></li>
     <li><a href="resources.html">Resources</a></li>
     <li><a href="gallery.html" class="active">Gallery</a></li>
+    <li><a href="publications.html">Books</a></li>
     <li><a href="index.html#approach">About</a></li>
     <li><a href="contact.html" class="nav-cta">Book a Call →</a></li>
   </ul>
@@ -440,6 +443,7 @@
       <li><a href="index.html#services">Services</a></li>
       <li><a href="resources.html">Resources</a></li>
       <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="publications.html">Books</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="https://literrific.com" target="_blank">LiTerrific →</a></li>
     </ul>

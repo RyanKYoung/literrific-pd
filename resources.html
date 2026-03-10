@@ -7,17 +7,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --charcoal:   #1a1f2e;
-    --teal:       #1a8f8a;
-    --teal-dark:  #136e6a;
-    --teal-light: #e6f5f4;
+    --charcoal:   #161616;
+    --teal:       #01826d;
+    --teal-dark:  #005e4f;
+    --teal-light: #dbfff9;
+    --gold:       #ffc300;
+    --gold-light: #fff8e2;
     --tan:        #c8b99a;
     --tan-light:  #f5f0e8;
-    --off-white:  #f8f8f6;
+    --off-white:  #f6f6f6;
     --gray-light: #f0f0ee;
     --gray-border:#e0e0dd;
     --text:       #1a1a1a;
-    --muted:      #6b7280;
+    --muted:      #5d6c7b;
     --white:      #ffffff;
   }
 
@@ -36,8 +38,8 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--white);
-    border-bottom: 1px solid var(--gray-border);
+    background: var(--charcoal);
+    border-bottom: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -48,7 +50,7 @@
     font-family: 'Lora', serif;
     font-weight: 700;
     font-size: 1.15rem;
-    color: var(--charcoal);
+    color: var(--white);
     text-decoration: none;
     letter-spacing: -.01em;
     line-height: 1.2;
@@ -64,11 +66,11 @@
     font-family: 'Geologica', sans-serif;
     font-size: .9rem;
     font-weight: 500;
-    color: var(--charcoal);
+    color: rgba(255,255,255,.75);
     text-decoration: none;
     transition: color .15s;
   }
-  .nav-links a:hover { color: var(--teal); }
+  .nav-links a:hover { color: var(--white); }
   .nav-links a.active { color: var(--teal); }
   .nav-cta {
     background: var(--teal);
@@ -181,8 +183,9 @@
     font-size: 3rem;
     flex-shrink: 0;
   }
-  .resource-thumb.webinar { background: linear-gradient(135deg, #eaecf5, var(--teal-light)); }
-  .resource-thumb.guide   { background: linear-gradient(135deg, var(--tan-light), #f5ede0); }
+  .resource-thumb.webinar  { background: linear-gradient(135deg, #eaecf5, var(--teal-light)); }
+  .resource-thumb.guide    { background: linear-gradient(135deg, var(--tan-light), #f5ede0); }
+  .resource-thumb.podcast  { background: linear-gradient(135deg, var(--gold-light), #fff3cd); }
 
   .resource-body {
     padding: 1.5rem;
@@ -203,8 +206,9 @@
     margin-bottom: .75rem;
     align-self: flex-start;
   }
-  .resource-badge.webinar { color: #5a6ea0; background: #eaecf5; }
-  .resource-badge.guide   { color: #7a5c2a; background: var(--tan-light); }
+  .resource-badge.webinar  { color: #5a6ea0; background: #eaecf5; }
+  .resource-badge.guide    { color: #7a5c2a; background: var(--tan-light); }
+  .resource-badge.podcast  { color: #6f2f01; background: var(--gold-light); }
 
   .resource-card h3 {
     font-family: 'Lora', serif;
@@ -493,6 +497,7 @@
     <li><a href="index.html#services">Services</a></li>
     <li><a href="resources.html" class="active">Resources</a></li>
     <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="publications.html">Books</a></li>
     <li><a href="index.html#approach">About</a></li>
     <li><a href="contact.html" class="nav-cta">Book a Call →</a></li>
   </ul>
@@ -576,6 +581,7 @@
   <button class="filter-tab active" data-filter="all">All</button>
   <button class="filter-tab" data-filter="article">Articles</button>
   <button class="filter-tab" data-filter="webinar">Webinar Recordings</button>
+  <button class="filter-tab" data-filter="podcast">Podcasts</button>
   <button class="filter-tab" data-filter="guide">Guides</button>
 </div>
 
@@ -584,7 +590,67 @@
   <div class="container">
     <div class="resources-grid" id="resources-grid">
 
-      <!-- Article 1 -->
+      <!-- Podcast 1 — LIVE -->
+      <article class="resource-card" data-category="podcast">
+        <div class="resource-thumb podcast">🎙️</div>
+        <div class="resource-body">
+          <span class="resource-badge podcast">Podcast</span>
+          <h3>Read Like Us: Building Fluency Through Repeated Reading &amp; Challenging Texts</h3>
+          <p class="resource-date">The Literacy Podcast · Ep. 245</p>
+          <p>Dr. Young joins Melissa, Lori, and Jake Downs to walk through a research-backed fluency routine designed to help students reread challenging texts with purpose and confidence.</p>
+          <a href="https://literacypodcast.com/?podcast=Buzzsprout-18300927" target="_blank" rel="noopener" class="resource-link">Listen →</a>
+        </div>
+      </article>
+
+      <!-- Podcast 2 — LIVE -->
+      <article class="resource-card" data-category="podcast">
+        <div class="resource-thumb podcast">🎙️</div>
+        <div class="resource-body">
+          <span class="resource-badge podcast">Podcast</span>
+          <h3>Readers' Theater: Easy, Effective, &amp; FUN!</h3>
+          <p class="resource-date">The Literacy Podcast · Ep. 209</p>
+          <p>Dr. Young breaks down why Readers' Theater is one of the most effective — and underused — approaches for building fluency and comprehension in K–5 classrooms.</p>
+          <a href="https://podcasts.apple.com/us/podcast/ep-209-readers-theater-easy-effective-fun-with-dr/id1463219123?i=1000676190917" target="_blank" rel="noopener" class="resource-link">Listen →</a>
+        </div>
+      </article>
+
+      <!-- Webinar 1 — LIVE (edWeb) -->
+      <article class="resource-card" data-category="webinar">
+        <div class="resource-thumb webinar">🎥</div>
+        <div class="resource-body">
+          <span class="resource-badge webinar">Webinar Recording</span>
+          <h3>Where the Science of Reading Meets the Science of Fun</h3>
+          <p class="resource-date">edWeb · 2024</p>
+          <p>Dr. Young demonstrates how high-impact literacy lessons can combine multiple evidence-based instructional approaches — without sacrificing engagement or joy in reading.</p>
+          <a href="https://home.edweb.net/webinar/lwt20240410/" target="_blank" rel="noopener" class="resource-link">Watch →</a>
+        </div>
+      </article>
+
+      <!-- Webinar 2 — LIVE (edWeb) -->
+      <article class="resource-card" data-category="webinar">
+        <div class="resource-thumb webinar">🎬</div>
+        <div class="resource-body">
+          <span class="resource-badge webinar">Webinar Recording</span>
+          <h3>Teaching Reading Fluency: The Art and Science Behind It</h3>
+          <p class="resource-date">edWeb · 2024 · with Tim Rasinski</p>
+          <p>Dr. Young and Tim Rasinski unpack the definitions and science of fluency — and share innovative, research-backed methods for teaching it in ways that stick.</p>
+          <a href="https://home.edweb.net/webinar/building-educator-capacity20240415/" target="_blank" rel="noopener" class="resource-link">Watch →</a>
+        </div>
+      </article>
+
+      <!-- Webinar 3 — LIVE (edWeb) -->
+      <article class="resource-card" data-category="webinar">
+        <div class="resource-thumb webinar">🎙️</div>
+        <div class="resource-body">
+          <span class="resource-badge webinar">Webinar Recording</span>
+          <h3>Science Tested, Kid-Approved</h3>
+          <p class="resource-date">edWeb · 2023</p>
+          <p>Engaging literacy strategies for K–3 educators that are grounded in the Science of Reading and proven to work with real kids in real classrooms.</p>
+          <a href="https://home.edweb.net/webinar/lwt20230801/" target="_blank" rel="noopener" class="resource-link">Watch →</a>
+        </div>
+      </article>
+
+      <!-- Article 1 — Coming Soon -->
       <article class="resource-card" data-category="article">
         <div class="resource-thumb">📖</div>
         <div class="resource-body">
@@ -596,31 +662,7 @@
         </div>
       </article>
 
-      <!-- Webinar 1 -->
-      <article class="resource-card" data-category="webinar">
-        <div class="resource-thumb webinar">🎥</div>
-        <div class="resource-body">
-          <span class="resource-badge webinar">Webinar Recording</span>
-          <h3>Building a Schoolwide Structured Literacy Model</h3>
-          <p class="resource-date">Coming Soon</p>
-          <p>A recording of our live webinar walking instructional leaders through a practical framework for aligning curriculum, coaching, and assessment around structured literacy.</p>
-          <a href="#" class="resource-link">Watch →</a>
-        </div>
-      </article>
-
-      <!-- Guide 1 -->
-      <article class="resource-card" data-category="guide">
-        <div class="resource-thumb guide">📊</div>
-        <div class="resource-body">
-          <span class="resource-badge guide">Guide</span>
-          <h3>Evaluating Your Current Literacy Program: A Leader's Checklist</h3>
-          <p class="resource-date">Coming Soon</p>
-          <p>A practical audit tool for principals and curriculum directors to assess alignment between current practice and evidence-based literacy instruction.</p>
-          <a href="#" class="resource-link">Download →</a>
-        </div>
-      </article>
-
-      <!-- Article 2 -->
+      <!-- Article 2 — Coming Soon -->
       <article class="resource-card" data-category="article">
         <div class="resource-thumb">✏️</div>
         <div class="resource-body">
@@ -632,19 +674,19 @@
         </div>
       </article>
 
-      <!-- Webinar 2 -->
-      <article class="resource-card" data-category="webinar">
-        <div class="resource-thumb webinar">🎬</div>
+      <!-- Guide 1 — Coming Soon -->
+      <article class="resource-card" data-category="guide">
+        <div class="resource-thumb guide">📊</div>
         <div class="resource-body">
-          <span class="resource-badge webinar">Webinar Recording</span>
-          <h3>Coaching Teachers in Phonics Instruction: What Works</h3>
+          <span class="resource-badge guide">Guide</span>
+          <h3>Evaluating Your Current Literacy Program: A Leader's Checklist</h3>
           <p class="resource-date">Coming Soon</p>
-          <p>An in-depth look at how instructional coaches can support teachers in delivering explicit, systematic phonics instruction — with live classroom examples.</p>
-          <a href="#" class="resource-link">Watch →</a>
+          <p>A practical audit tool for principals and curriculum directors to assess alignment between current practice and evidence-based literacy instruction.</p>
+          <a href="#" class="resource-link">Download →</a>
         </div>
       </article>
 
-      <!-- Guide 2 -->
+      <!-- Guide 2 — Coming Soon -->
       <article class="resource-card" data-category="guide">
         <div class="resource-thumb guide">📋</div>
         <div class="resource-body">
@@ -689,6 +731,7 @@
     <ul class="footer-links">
       <li><a href="index.html#services">Services</a></li>
       <li><a href="resources.html">Resources</a></li>
+      <li><a href="publications.html">Books</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="https://literrific.com" target="_blank">LiTerrific →</a></li>
     </ul>
