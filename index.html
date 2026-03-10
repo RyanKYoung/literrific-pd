@@ -361,6 +361,41 @@
     flex-shrink: 0;
   }
 
+  /* ── Facilitators ── */
+  .facilitators-section { background: var(--teal); padding: 3rem 0; }
+  .facilitators-callout {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    background: rgba(255,255,255,.1);
+    border-radius: 16px;
+    padding: 2.25rem 2.5rem;
+  }
+  .facilitators-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: .15rem;
+  }
+  .facilitators-body .section-label { color: rgba(255,255,255,.7); }
+  .facilitators-body h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: .35rem 0 .9rem;
+    line-height: 1.35;
+  }
+  .facilitators-body p {
+    font-size: .96rem;
+    color: rgba(255,255,255,.88);
+    line-height: 1.75;
+    margin: 0;
+  }
+  @media (max-width: 600px) {
+    .facilitators-callout { flex-direction: column; gap: 1rem; padding: 1.5rem; }
+  }
+
   /* ── Our Approach ── */
   .approach { background: var(--tan-light); }
   .approach-grid {
@@ -766,25 +801,39 @@
         <img src="images/chase-young.avif" alt="Dr. Chase Young">
         <div class="expert-photo-badge">
           <strong>Dr. Chase Young</strong>
-          <span>Professor of Literacy · Sam Houston State University</span>
+          <span>Barbara G. Silverman Endowed Chair in Literacy · Sam Houston State University</span>
         </div>
       </div>
       <div class="expert-content">
         <span class="section-label">Research Partner</span>
         <h2>The Science Behind<br><em>Every Session</em></h2>
-        <p class="expert-bio">Dr. Chase Young is a Professor of Literacy at Sam Houston State University, Editor of <em>Reading Research Quarterly</em>, and Chief Literacy Officer at LiTerrific. He started his career as a classroom teacher — and that experience drives everything he does.</p>
-        <p class="expert-bio">His work bridges rigorous research and real classroom practice, with a focus on reading fluency, literacy interventions, and instructional strategies that actually work. Every LiTerrific PD program is shaped by his expertise and commitment to evidence-based teaching.</p>
+        <p class="expert-bio">Dr. Chase Young began his career as a 2nd-grade teacher in Title I schools before earning his PhD from the University of North Texas (2012). Named the Barbara G. Silverman Endowed Chair in Literacy at Sam Houston State University in 2015, he is Chief Literacy Officer at LiTerrific and Editor of <em>Reading Research Quarterly</em> (2026–2030). His classroom roots are the foundation of everything LiTerrific does.</p>
+        <p class="expert-bio">Dr. Young's research on reading fluency, literacy intervention, and evidence-based instruction has shaped policy and practice nationally. He is Series Editor for DK Publishing / Penguin Random House's <em>The Science of Reading</em> series and a collaborator on a $2.8M NSF grant focused on literacy transformation at Hispanic-Serving Institutions. Every LiTerrific PD program is built on his published, peer-reviewed work.</p>
         <ul class="expert-creds">
-          <li>Professor of Literacy, Sam Houston State University</li>
-          <li>Editor, <em>Reading Research Quarterly</em></li>
-          <li>Author: <em>Artfully Teaching the Science of Reading</em>, <em>Build Reading Fluency</em>, <em>Tiered Fluency Instruction</em></li>
-          <li>A.B. Herr Award · Diane Lapp &amp; James Flood Professional Collaborator Award</li>
-          <li>Jack Cassidy Award for Scholarly Contributions</li>
+          <li>Barbara G. Silverman Endowed Chair in Literacy · Sam Houston State University</li>
+          <li>Editor, <em>Reading Research Quarterly</em> (2026–2030)</li>
+          <li>Series Editor, <em>The Science of Reading</em> · DK Publishing / Penguin Random House</li>
+          <li>Author: <em>Artfully Teaching the Science of Reading</em> · <em>Artfully Teaching Reading with Project-Based Learning</em> (in press, Routledge) · <em>Build Reading Fluency</em> · <em>Tiered Fluency Instruction</em></li>
+          <li>A.B. Herr Award · Diane Lapp &amp; James Flood Professional Collaborator Award · Jack Cassidy Award</li>
         </ul>
         <div style="display:flex;gap:1rem;flex-wrap:wrap;">
           <a href="contact.html" class="btn-primary">Work With Us →</a>
           <a href="https://thebestclass.org" target="_blank" class="btn-outline">thebestclass.org ↗</a>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Facilitators -->
+<section class="facilitators-section">
+  <div class="container">
+    <div class="facilitators-callout">
+      <div class="facilitators-icon">🎓</div>
+      <div class="facilitators-body">
+        <span class="section-label">Who Delivers LiTerrific PD</span>
+        <h3>University Faculty. Field Practitioners. Real Classroom Expertise.</h3>
+        <p>Our facilitators are active professors at research universities and literacy researchers whose work appears in the field's top peer-reviewed journals. They are published authors, recipients of national literacy awards, leaders of professional organizations, and — critically — former K–5 classroom teachers and district instructional coaches. They hold doctoral degrees in literacy, reading education, and curriculum &amp; instruction, and bring hands-on expertise in the Science of Reading, structured literacy, reading fluency, comprehension, and dyslexia intervention. Many have delivered PD across dozens of states and lead national literacy initiatives. You're not getting a generalist trainer. You're getting the field's leading practitioners.</p>
       </div>
     </div>
   </div>
@@ -956,7 +1005,7 @@
       <li><a href="contact.html">Contact</a></li>
       <li><a href="https://literrific.com" target="_blank">LiTerrific →</a></li>
     </ul>
-    <p class="footer-copy">© 2026 LiTerrific Professional Development<br>ptnmanagement.com · info@literrific.com</p>
+    <p class="footer-copy">© 2026 LiTerrific Professional Development<br>literacylive.org · info@literrific.com</p>
   </div>
 </footer>
 

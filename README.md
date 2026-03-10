@@ -2,7 +2,7 @@
 
 Static HTML site targeting teachers and school district leadership. No auth, no payments — conversion is a contact/quote form.
 
-**Live site:** ptnmanagement.com (deploy via Netlify — not yet configured)
+**Live site:** literacylive.org (deploy via Netlify — not yet configured)
 **Repo:** https://github.com/RyanKYoung/literrific-pd
 
 ---
@@ -68,4 +68,4 @@ Forward port 3001 in VS Code Ports tab (distinct from LFC Reading on port 3000).
 
 - Replace Formspree PLACEHOLDER with real endpoint
 - Fill in real testimonial names, roles, and quotes
-- Deploy to Netlify and point ptnmanagement.com domain
+- Deploy to Netlify and point literacylive.org domain
