@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — LiTerrific Professional Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --charcoal:   #1a1f2e;
+    --teal:       #1a8f8a;
+    --teal-dark:  #136e6a;
+    --teal-light: #e6f5f4;
+    --tan:        #c8b99a;
+    --tan-light:  #f5f0e8;
+    --off-white:  #f8f8f6;
+    --gray-light: #f0f0ee;
+    --gray-border:#e0e0dd;
+    --text:       #1a1a1a;
+    --muted:      #6b7280;
+    --white:      #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Geologica', sans-serif;
+    font-weight: 400;
+    background: var(--off-white);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 68px;
+  }
+  .nav-logo {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--charcoal);
+    text-decoration: none;
+    letter-spacing: -.01em;
+    line-height: 1.2;
+  }
+  .nav-logo span { color: var(--teal); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Geologica', sans-serif;
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    text-decoration: none;
+    transition: color .15s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-links a.active { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal);
+    color: var(--white) !important;
+    padding: .55rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: background .15s !important;
+  }
+  .nav-cta:hover { background: var(--teal-dark) !important; }
+
+  /* ── Page Header ── */
+  .page-header {
+    background: var(--charcoal);
+    padding: 4rem 2rem 3.5rem;
+    text-align: center;
+  }
+  .section-label {
+    display: inline-block;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    background: rgba(26,143,138,.15);
+    padding: .3rem .85rem;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+  .page-header h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: .75rem;
+    line-height: 1.25;
+  }
+  .page-header h1 em { font-style: italic; color: var(--teal); }
+  .page-header p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,.65);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── Gallery ── */
+  .gallery-section {
+    padding: 3.5rem 2rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .masonry {
+    columns: 3;
+    column-gap: 1.25rem;
+  }
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1.25rem;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    display: block;
+    background: var(--gray-light);
+    box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    transition: box-shadow .2s, transform .2s;
+  }
+  .masonry-item:hover { box-shadow: 0 8px 28px rgba(0,0,0,.16); transform: translateY(-2px); }
+  .masonry-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity .2s;
+  }
+  .masonry-item:hover img { opacity: .92; }
+  .masonry-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(26,31,46,.78));
+    color: var(--white);
+    font-size: .78rem;
+    font-weight: 500;
+    padding: 2rem .9rem .75rem;
+    opacity: 0;
+    transition: opacity .2s;
+    line-height: 1.4;
+  }
+  .masonry-item:hover .masonry-caption { opacity: 1; }
+
+  /* ── Lightbox ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,12,20,.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-inner {
+    position: relative;
+    max-width: 1100px;
+    max-height: 90vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .lightbox-img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    display: block;
+  }
+  .lightbox-caption {
+    color: rgba(255,255,255,.7);
+    font-size: .85rem;
+    margin-top: .85rem;
+    text-align: center;
+  }
+  .lightbox-close {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,.7);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: .25rem .5rem;
+    transition: color .15s;
+    z-index: 1001;
+  }
+  .lightbox-close:hover { color: var(--white); }
+  .lightbox-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,.1);
+    border: none;
+    color: var(--white);
+    font-size: 1.75rem;
+    cursor: pointer;
+    padding: .75rem 1rem;
+    border-radius: 8px;
+    transition: background .15s;
+    z-index: 1001;
+    backdrop-filter: blur(4px);
+  }
+  .lightbox-nav:hover { background: rgba(255,255,255,.2); }
+  .lightbox-prev { left: 1rem; }
+  .lightbox-next { right: 1rem; }
+  .lightbox-counter {
+    position: fixed;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,.5);
+    font-size: .78rem;
+    letter-spacing: .08em;
+  }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--white);
+    border-top: 1px solid var(--gray-border);
+    padding: 2.5rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+  .footer-logo {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--charcoal);
+    text-decoration: none;
+  }
+  .footer-logo span { color: var(--teal); }
+  .footer-links {
+    display: flex;
+    gap: 1.75rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    font-size: .85rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .15s;
+  }
+  .footer-links a:hover { color: var(--charcoal); }
+  .footer-copy {
+    font-size: .8rem;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .masonry { columns: 2; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1.25rem; }
+    .nav-links li:not(:last-child) { display: none; }
+    .gallery-section { padding: 2.5rem 1.25rem 4rem; }
+    .masonry { columns: 1; }
+    .lightbox-nav { display: none; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-copy { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="index.html" class="nav-logo">LiTerrific <span>Professional Development</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="gallery.html" class="active">Gallery</a></li>
+    <li><a href="index.html#approach">About</a></li>
+    <li><a href="contact.html" class="nav-cta">Book a Call →</a></li>
+  </ul>
+</nav>
+
+<!-- Page Header -->
+<div class="page-header">
+  <span class="section-label">In the Room</span>
+  <h1>LiTerrific PD <em>in Action</em></h1>
+  <p>From regional conferences to district training days — a look inside the sessions transforming literacy instruction.</p>
+</div>
+
+<!-- Gallery -->
+<div class="gallery-section">
+  <div class="masonry" id="gallery">
+
+    <div class="masonry-item" data-index="0">
+      <img src="Session%20Photos/ece12723-5e80-4bd1-854a-7d13712c36a6.jpeg" alt="The Simple View of Reading" loading="lazy">
+      <div class="masonry-caption">The Simple View of Reading — packed district PD</div>
+    </div>
+
+    <div class="masonry-item" data-index="1">
+      <img src="Session%20Photos/cfd00411-0024-49df-91fd-5663ced3bd5a.jpeg" alt="Full-day workshop in progress" loading="lazy">
+      <div class="masonry-caption">Full-day structured literacy workshop</div>
+    </div>
+
+    <div class="masonry-item" data-index="2">
+      <img src="Session%20Photos/dc6f1dc7-1038-422c-9772-34468d4b600e.jpeg" alt="HOIM CONNECT regional conference" loading="lazy">
+      <div class="masonry-caption">HOIM CONNECT regional conference</div>
+    </div>
+
+    <div class="masonry-item" data-index="3">
+      <img src="Session%20Photos/ed5358c0-5f7f-48b4-9879-ae91ab5b1c7c.jpeg" alt="Artfully Teaching the Science of Reading" loading="lazy">
+      <div class="masonry-caption">Artfully Teaching the Science of Reading</div>
+    </div>
+
+    <div class="masonry-item" data-index="4">
+      <img src="Session%20Photos/483f28c1-2aad-4734-b646-acfce732ace9.jpeg" alt="The National Reading Panel, revisited" loading="lazy">
+      <div class="masonry-caption">The National Reading Panel — evidence and practice</div>
+    </div>
+
+    <div class="masonry-item" data-index="5">
+      <img src="Session%20Photos/8524aecc-5f26-4a8b-a240-6b7f4080be52.jpeg" alt="Teachers with Reading Fluency books" loading="lazy">
+      <div class="masonry-caption">Teachers with their copies of Build Reading Fluency</div>
+    </div>
+
+    <div class="masonry-item" data-index="6">
+      <img src="Session%20Photos/9488a0ee-35fa-4029-bd0d-941ae2b04679.jpeg" alt="Fluency activity in session" loading="lazy">
+      <div class="masonry-caption">Fluency strategy in action — Swimming Ool</div>
+    </div>
+
+    <div class="masonry-item" data-index="7">
+      <img src="Session%20Photos/3575917a-d378-432f-b4f9-67b5a7495287.jpeg" alt="Phonics instruction deep dive" loading="lazy">
+      <div class="masonry-caption">Phonics instruction deep dive</div>
+    </div>
+
+    <div class="masonry-item" data-index="8">
+      <img src="Session%20Photos/25e49bf4-a721-4f82-9f3c-41b435171521.jpeg" alt="Region 11 Teaching and Learning, July 2025" loading="lazy">
+      <div class="masonry-caption">Region 11 Teaching &amp; Learning — July 2025</div>
+    </div>
+
+    <div class="masonry-item" data-index="9">
+      <img src="Session%20Photos/89588490-77f0-4056-adad-e6a4f4cf683e.jpeg" alt="Phonics scope and sequence" loading="lazy">
+      <div class="masonry-caption">Phonics scope &amp; sequence — connecting research to instruction</div>
+    </div>
+
+    <div class="masonry-item" data-index="10">
+      <img src="Session%20Photos/571ab997-b10b-437d-a6c4-a4e810ab8d64.jpeg" alt="Live LiTerrific data walkthrough" loading="lazy">
+      <div class="masonry-caption">Live LiTerrific Data walkthrough</div>
+    </div>
+
+    <div class="masonry-item" data-index="11">
+      <img src="Session%20Photos/29ee775c-5f65-4203-a43b-a0c6c8be2b4e.jpeg" alt="A Roast of the Reading Wars" loading="lazy">
+      <div class="masonry-caption">A Roast of the Reading Wars</div>
+    </div>
+
+    <div class="masonry-item" data-index="12">
+      <img src="Session%20Photos/ab589048-267f-4334-961a-4d6329b09c3d.jpeg" alt="The Art and Science of Teaching Reading event" loading="lazy">
+      <div class="masonry-caption">The Art and Science of Teaching Reading</div>
+    </div>
+
+    <div class="masonry-item" data-index="13">
+      <img src="Session%20Photos/3ba1f089-a0bc-45e7-9f9f-622b073c5618.jpeg" alt="Breaking down effect size research" loading="lazy">
+      <div class="masonry-caption">Breaking down effect size — research that sticks</div>
+    </div>
+
+    <div class="masonry-item" data-index="14">
+      <img src="Session%20Photos/7ca75cbb-b69b-4d7a-9b2a-66c0154931ae.jpeg" alt="Literacy Leadership Conference presenter" loading="lazy">
+      <div class="masonry-caption">Literacy Leadership Conference — featured presenter</div>
+    </div>
+
+    <div class="masonry-item" data-index="15">
+      <img src="Session%20Photos/ffe685f1-00ca-46e0-80ff-70ec67e54fdd.jpeg" alt="Word families and phonics patterns" loading="lazy">
+      <div class="masonry-caption">Word families — phonics patterns in practice</div>
+    </div>
+
+    <div class="masonry-item" data-index="16">
+      <img src="Session%20Photos/fa67974f-15fc-4820-bab2-bb49ca4eec04.jpeg" alt="Conference keynote session" loading="lazy">
+      <div class="masonry-caption">Conference keynote — You are artists inspired by science</div>
+    </div>
+
+    <div class="masonry-item" data-index="17">
+      <img src="Session%20Photos/732c4b8e-7d83-49fe-897d-0f9ed55ab8f2.jpeg" alt="Structured Literacy session selfie" loading="lazy">
+      <div class="masonry-caption">Post-session — Structured Literacy Room 2709</div>
+    </div>
+
+    <div class="masonry-item" data-index="18">
+      <img src="Session%20Photos/1d79ba64-8e8b-4187-814a-9e16440e922f.jpeg" alt="Session celebration" loading="lazy">
+      <div class="masonry-caption">Post-PD celebration</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">×</button>
+  <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">‹</button>
+  <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">›</button>
+  <div class="lightbox-inner">
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">LiTerrific <span>Professional Development</span></a>
+    <ul class="footer-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://literrific.com" target="_blank">LiTerrific →</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 LiTerrific Professional Development<br>literacylive.org · info@literrific.com</p>
+  </div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('.masonry-item');
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbCaption = document.getElementById('lightbox-caption');
+  const lbCounter = document.getElementById('lightbox-counter');
+  let current = 0;
+
+  function openLightbox(index) {
+    current = index;
+    const item = items[current];
+    const img = item.querySelector('img');
+    const cap = item.querySelector('.masonry-caption');
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lbCaption.textContent = cap ? cap.textContent : '';
+    lbCounter.textContent = (current + 1) + ' / ' + items.length;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+  }
+
+  function navigate(dir) {
+    current = (current + dir + items.length) % items.length;
+    openLightbox(current);
+  }
+
+  items.forEach((item) => {
+    item.addEventListener('click', () => openLightbox(parseInt(item.dataset.index)));
+  });
+
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-prev').addEventListener('click', (e) => { e.stopPropagation(); navigate(-1); });
+  document.getElementById('lightbox-next').addEventListener('click', (e) => { e.stopPropagation(); navigate(1); });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigate(-1);
+    if (e.key === 'ArrowRight') navigate(1);
+  });
+</script>
+
+</body>
+</html>
