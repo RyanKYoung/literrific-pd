@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+comm<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -602,6 +602,8 @@
     margin-bottom: .75rem;
   }
   .resource-badge.webinar { color: #5a6ea0; background: #eaecf5; }
+  .resource-badge.podcast { color: #7a5c00; background: var(--gold-light); }
+  .resource-badge.guide { color: #5c3d1e; background: #f0e8da; }
   .resource-card h3 {
     font-family: 'Lora', serif;
     font-size: 1.05rem;
@@ -694,6 +696,91 @@
     text-align: right;
   }
 
+  /* ── Hero energy line ── */
+  .hero-energy {
+    font-size: .97rem !important;
+    color: var(--teal) !important;
+    font-weight: 500;
+    margin-top: -.75rem !important;
+    margin-bottom: 2rem !important;
+    font-style: italic;
+  }
+
+  /* ── Facilitators vibe line ── */
+  .facilitators-vibe {
+    margin-top: .9rem !important;
+    font-style: italic;
+    color: rgba(255,255,255,.7) !important;
+    font-size: .92rem !important;
+  }
+
+  /* ── Session sample ── */
+  .session-sample { background: var(--tan-light); }
+  .session-sample .section-header { margin-bottom: 2.75rem; }
+  .activity-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.75rem;
+  }
+  .activity-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2rem 1.75rem 2rem;
+    border: 1px solid var(--gray-border);
+    box-shadow: 0 2px 14px rgba(0,0,0,.05);
+    transition: box-shadow .2s, transform .2s;
+  }
+  .activity-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.09); transform: translateY(-2px); }
+  .activity-num {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--charcoal);
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.1rem;
+  }
+  .activity-tag {
+    display: inline-block;
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    background: var(--teal-light);
+    padding: .2rem .65rem;
+    border-radius: 100px;
+    margin-bottom: .7rem;
+  }
+  .activity-card h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: .55rem;
+    line-height: 1.3;
+  }
+  .activity-card p {
+    font-size: .88rem;
+    color: var(--muted);
+    line-height: 1.68;
+  }
+  .session-note {
+    text-align: center;
+    font-size: .82rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+  @media (max-width: 900px) {
+    .activity-cards { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto 1.75rem; }
+  }
+
   /* ── Animations ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
@@ -745,8 +832,9 @@
 <!-- Hero -->
 <section class="hero">
   <div class="container">
-    <h1>Transforming Literacy Instruction<br><em>Across Your District</em></h1>
-    <p>Evidence-based professional development for teachers and school leaders — delivered virtually, on-site, or through ongoing coaching. Grounded in the Science of Reading.</p>
+    <h1>The Science of Reading,<br><em>Artfully Taught</em></h1>
+    <p>Evidence-based PD that teachers actually look forward to — delivered virtually, on-site, or through ongoing coaching. Grounded in the Science of Reading.</p>
+    <p class="hero-energy">Come ready to laugh, think, and leave with a dozen strategies before lunch.</p>
     <div class="hero-ctas">
       <a href="#services" class="btn-gold">Our Services ↓</a>
       <a href="contact.html" class="btn-outline">Book a Call</a>
@@ -833,7 +921,7 @@
           <li>Barbara G. Silverman Endowed Chair in Literacy · Sam Houston State University</li>
           <li>Editor, <em>Reading Research Quarterly</em> (2026–2030)</li>
           <li>Series Editor, <em>The Science of Reading</em> · DK Publishing / Penguin Random House</li>
-          <li>Author: <em>Artfully Teaching the Science of Reading</em> · <em>Artfully Teaching Reading with Project-Based Learning</em> (in press, Routledge) · <em>Build Reading Fluency</em> · <em>Tiered Fluency Instruction</em></li>
+          <li>Author of 7 books on reading fluency and the Science of Reading — <a href="publications.html" style="color:var(--teal);font-weight:600;">view titles →</a></li>
           <li>A.B. Herr Award · Diane Lapp &amp; James Flood Professional Collaborator Award · Jack Cassidy Award</li>
         </ul>
         <div style="display:flex;gap:1rem;flex-wrap:wrap;">
@@ -854,6 +942,7 @@
         <span class="section-label">Who Delivers LiTerrific PD</span>
         <h3>University Faculty. Field Practitioners. Real Classroom Expertise.</h3>
         <p>Our facilitators are active professors at research universities and literacy researchers whose work appears in the field's top peer-reviewed journals. They are published authors, recipients of national literacy awards, leaders of professional organizations, and — critically — former K–5 classroom teachers and district instructional coaches. They hold doctoral degrees in literacy, reading education, and curriculum &amp; instruction, and bring hands-on expertise in the Science of Reading, structured literacy, reading fluency, comprehension, and dyslexia intervention. Many have delivered PD across dozens of states and lead national literacy initiatives. You're not getting a generalist trainer. You're getting the field's leading practitioners.</p>
+        <p class="facilitators-vibe">This isn't sit-and-get. Expect movement, real classroom demonstrations, and more than a few laughs — alongside the research.</p>
       </div>
     </div>
   </div>
@@ -909,51 +998,39 @@
   </div>
 </section>
 
-<!-- Testimonials -->
-<section class="testimonials" id="testimonials">
+<!-- Inside a Session -->
+<section class="session-sample">
   <div class="container">
-    <span class="section-label">Testimonials</span>
-    <h2>What Educators Are Saying</h2>
-    <div class="testimonials-grid">
+    <div class="section-header">
+      <span class="section-label">What Teachers Experience</span>
+      <h2>A Sample of <em>What Your Staff Will Learn to Do</em></h2>
+      <p class="section-sub">A few of the activities teachers take back to their classrooms the very next day.</p>
+    </div>
+    <div class="activity-cards">
 
-      <div class="testimonial-card">
-        <div class="quote-mark">"</div>
-        <p class="quote">This PD was unlike anything we've done before. Teachers left with real strategies they could use immediately — and our data has reflected that all year long.</p>
-        <div class="testimonial-attr">
-          <div class="avatar-initials">SL</div>
-          <div>
-            <strong>Name Coming Soon</strong>
-            <span>Literacy Coach, District Name</span>
-          </div>
-        </div>
+      <div class="activity-card">
+        <div class="activity-num">1</div>
+        <span class="activity-tag">Fluency</span>
+        <h3>5-Day Reader's Theatre</h3>
+        <p>Day 1: cold read and rate. Days 2–3: echo and choral reading. Day 4: rehearsal. Day 5: performance. A structured, zero-prep protocol that builds prosody and engagement simultaneously.</p>
       </div>
 
-      <div class="testimonial-card">
-        <div class="quote-mark">"</div>
-        <p class="quote">The virtual format worked better than I expected. Our teachers were engaged, the facilitators were responsive, and the follow-up coaching made the difference.</p>
-        <div class="testimonial-attr">
-          <div class="avatar-initials">MR</div>
-          <div>
-            <strong>Name Coming Soon</strong>
-            <span>Curriculum Director, District Name</span>
-          </div>
-        </div>
+      <div class="activity-card">
+        <div class="activity-num">2</div>
+        <span class="activity-tag">Vocabulary</span>
+        <h3>Vocabulary Charades</h3>
+        <p>Students act out target vocabulary words in teams. Zero materials, high energy — and it generates the multiple exposures research says students need to truly own a word.</p>
       </div>
 
-      <div class="testimonial-card">
-        <div class="quote-mark">"</div>
-        <p class="quote">We've done a lot of PD. This was one of the few times I watched teachers walk out genuinely excited. The content was rigorous without being overwhelming.</p>
-        <div class="testimonial-attr">
-          <div class="avatar-initials">TW</div>
-          <div>
-            <strong>Name Coming Soon</strong>
-            <span>Principal, School Name</span>
-          </div>
-        </div>
+      <div class="activity-card">
+        <div class="activity-num">3</div>
+        <span class="activity-tag">Phonics · Writing · Nonfiction</span>
+        <h3>Synergistic Story Building</h3>
+        <p>Morphology meets content-area reading: students decode compound words, research a nonfiction topic, draft a narrative, and perform it — four standards, one connected lesson arc.</p>
       </div>
 
     </div>
-    <p class="testimonial-placeholder-note">Real testimonials coming soon — reach out to share your experience.</p>
+    <p class="session-note">Activities drawn from Dr. Young's workshop <em>Integrating Art and Science in Literacy Instruction</em>.</p>
   </div>
 </section>
 
@@ -973,32 +1050,29 @@
         <div class="resource-thumb">📖</div>
         <div class="resource-body">
           <span class="resource-badge">Article</span>
-          <h3>What Every District Leader Should Know About the Science of Reading</h3>
-          <p class="resource-date">Coming Soon</p>
-          <p>A plain-language overview of the research base that's reshaping literacy instruction — and what it means for professional development planning.</p>
-          <a href="resources.html" class="resource-link">Read more →</a>
+          <h3>What If Struggling Readers Need Harder Books, Not Easier Ones?</h3>
+          <p>The research on text complexity may surprise you — and change how you think about leveled reading in your schools.</p>
+          <a href="blogs/read-like-us-blog-post.html" class="resource-link">Read more →</a>
         </div>
       </article>
 
       <article class="resource-card">
-        <div class="resource-thumb webinar">🎥</div>
+        <div class="resource-thumb" style="background: linear-gradient(135deg, var(--gold-light), #fff3cc);">🎙️</div>
         <div class="resource-body">
-          <span class="resource-badge webinar">Webinar</span>
-          <h3>Building a Schoolwide Structured Literacy Model</h3>
-          <p class="resource-date">Coming Soon</p>
-          <p>A recording of our live webinar walking instructional leaders through a framework for aligning curriculum, coaching, and assessment around structured literacy.</p>
-          <a href="resources.html" class="resource-link">Watch →</a>
+          <span class="resource-badge podcast">Podcast</span>
+          <h3>Build Reading Fluency Through Repeated Reading &amp; Challenging Texts</h3>
+          <p>Dr. Young joins the Literacy Podcast (ep. 245) to discuss evidence-based fluency strategies that work — and how to bring them into everyday instruction.</p>
+          <a href="https://www.buzzsprout.com/2049175/episodes/15866878" target="_blank" class="resource-link">Listen →</a>
         </div>
       </article>
 
       <article class="resource-card">
-        <div class="resource-thumb">📊</div>
+        <div class="resource-thumb" style="background: linear-gradient(135deg, #f0e8da, var(--tan-light));">📋</div>
         <div class="resource-body">
-          <span class="resource-badge">Guide</span>
-          <h3>Evaluating Your Current Literacy Program: A Leader's Checklist</h3>
-          <p class="resource-date">Coming Soon</p>
-          <p>A practical audit tool for principals and curriculum directors to assess alignment between current practice and evidence-based literacy instruction.</p>
-          <a href="resources.html" class="resource-link">Download →</a>
+          <span class="resource-badge guide">Guide</span>
+          <h3>Fluency Instruction: A Practical Guide</h3>
+          <p>A research-grounded overview of how to teach reading fluency effectively — including the strategies, routines, and assessment tools that make the biggest difference.</p>
+          <a href="Fluency Instruction.pdf" target="_blank" class="resource-link">Download →</a>
         </div>
       </article>
 

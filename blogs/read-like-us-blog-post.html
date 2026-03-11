@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What If Struggling Readers Need Harder Books, Not Easier Ones?</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --cream: #faf8f4;
+    --rust: #c4572a;
+    --sage: #5a7a62;
+    --sand: #e8e0d4;
+    --muted: #6b6b7b;
+    --highlight: #fff3cd;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.75;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .hero {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 80px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(196,87,42,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .category {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--rust);
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(250,248,244,0.7);
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .meta {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(250,248,244,0.12);
+    font-size: 14px;
+    color: rgba(250,248,244,0.5);
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  article {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 24px 80px;
+  }
+
+  article p {
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 500;
+    margin: 48px 0 20px;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+  }
+
+  .lead {
+    font-size: 21px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .callout {
+    background: var(--sand);
+    border-left: 4px solid var(--rust);
+    padding: 28px 32px;
+    margin: 36px 0;
+    border-radius: 0 8px 8px 0;
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin: 40px 0;
+  }
+
+  .stat-card {
+    background: white;
+    border: 1px solid var(--sand);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .stat-card .number {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--rust);
+    display: block;
+  }
+
+  .stat-card .label {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .protocol-steps {
+    background: white;
+    border: 1px solid var(--sand);
+    border-radius: 12px;
+    padding: 36px;
+    margin: 40px 0;
+  }
+
+  .protocol-steps h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+
+  .step:last-child { margin-bottom: 0; }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--sage);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .step-text {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .step-text strong {
+    display: block;
+    font-size: 17px;
+    margin-bottom: 2px;
+  }
+
+  .takeaway {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 12px;
+    padding: 36px;
+    margin: 48px 0;
+  }
+
+  .takeaway h2 {
+    color: var(--cream);
+    margin-top: 0;
+    font-size: 24px;
+  }
+
+  .takeaway p {
+    color: rgba(250,248,244,0.8);
+    margin-bottom: 16px;
+  }
+
+  .takeaway p:last-child { margin-bottom: 0; }
+
+  .source-box {
+    background: var(--sand);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-top: 48px;
+    font-size: 15px;
+    color: var(--muted);
+  }
+
+  .source-box a {
+    color: var(--rust);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rust);
+  }
+
+  .source-box a:hover {
+    opacity: 0.8;
+  }
+
+  strong { font-weight: 600; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 60px 20px 48px; }
+    article { padding: 40px 20px 60px; }
+    .protocol-steps { padding: 24px; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="category">Literacy Research</div>
+    <h1>What If Struggling Readers Need Harder Books, Not Easier Ones?</h1>
+    <p class="subtitle">A new study on the "Read Like Us" protocol challenges conventional wisdom about text difficulty and reading fluency.</p>
+    <div class="meta">
+      <span>Based on research by Jake Downs &amp; Chase Young</span>
+      <span>The Journal of Educational Research, Vol. 118, No. 1</span>
+    </div>
+  </div>
+</header>
+
+<article>
+  <p class="lead">For decades, the default approach to helping struggling readers has been to give them easier texts. Match the book to the kid's level. Don't frustrate them. But what if that instinct is actually holding them back?</p>
+
+  <p>A study published in <em>The Journal of Educational Research</em> by Jake Downs (Utah State University) and Chase Young (Sam Houston State University) tested a different approach. They designed a fluency protocol called <strong>"Read Like Us"</strong> and put it to work with third and fourth graders reading well below grade level. Instead of giving these students simpler texts, they handed them <em>harder</em> ones — and built a structured routine around reading them successfully.</p>
+
+  <p>The results were clear: students in the Read Like Us program made greater gains in reading speed and accuracy than those in standard interventions. Here's how it worked and why it matters.</p>
+
+  <h2>The Problem With "Easy" Books</h2>
+
+  <p>When a student struggles with fluency, the typical move is to drop them into texts well below grade level. The logic makes sense on the surface — remove frustration, build confidence, let them practice at a comfortable pace.</p>
+
+  <p>But there's a cost. Easier texts expose students to simpler vocabulary, less complex sentence structures, and fewer opportunities to build the stamina they need for grade-level work. Over time, the gap between what they <em>can</em> read and what they <em>need</em> to read grows wider.</p>
+
+  <div class="callout">What if the struggle itself — supported by the right structure — is what builds fluent readers?</div>
+
+  <h2>The Study at a Glance</h2>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <span class="number">174</span>
+      <span class="label">Students in Read Like Us</span>
+    </div>
+    <div class="stat-card">
+      <span class="number">194</span>
+      <span class="label">Students in control group</span>
+    </div>
+    <div class="stat-card">
+      <span class="number">50</span>
+      <span class="label">Texts read over 50 sessions</span>
+    </div>
+    <div class="stat-card">
+      <span class="number">5th</span>
+      <span class="label">Average grade-level complexity</span>
+    </div>
+  </div>
+
+  <p>The researchers worked with third and fourth graders who scored "Below Benchmark" or "Well Below Benchmark" on the Acadience Reading assessment. These weren't kids who were a little behind — they were meaningfully struggling.</p>
+
+  <p>The Read Like Us group worked through 50 different texts over 50 instructional sessions. These texts averaged fifth-grade complexity — well above the students' tested reading levels. The texts spanned eight genres: funny poetry, short stories with a twist, informational pieces, fun facts, classic poems, folk tales, strange state laws, and types of engineers.</p>
+
+  <p>The control group received their district's standard fluency intervention curriculum.</p>
+
+  <h2>How "Read Like Us" Works</h2>
+
+  <p>The protocol is built around repeated reading and wide reading. Students work in small groups with an instructor and read the same text multiple times, each time in a different way. The key insight: students aren't expected to nail it the first time. The structure provides scaffolding that builds toward independence.</p>
+
+  <div class="protocol-steps">
+    <h3>The 5-Read Sequence</h3>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>Model Read</strong>The instructor reads the text aloud while students follow along — setting the bar for fluent reading.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>Choral Reading</strong>Everyone reads together in unison, giving struggling readers group support through challenging passages.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Paired Reading</strong>Students pair up and read together, with a partner providing real-time support.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text"><strong>Independent Whisper Read</strong>Students read on their own at a whisper — building toward independence with the text.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-text"><strong>Performance Read</strong>Students stand and the instructor calls on individuals to read sections aloud — creating an authentic purpose for the practice.</div>
+    </div>
+  </div>
+
+  <p>Each session ran about 30 minutes. A new text was introduced every session, meaning students encountered a wide variety of content, vocabulary, and sentence structures over the 50-session program.</p>
+
+  <h2>What They Found</h2>
+
+  <p><strong>The wins were real.</strong> Students in the Read Like Us condition made greater gains in words read per minute and passage reading accuracy compared to the control group. In other words, the protocol accelerated their fluency development beyond what the district's standard intervention achieved.</p>
+
+  <p><strong>But it wasn't a silver bullet.</strong> The study found no significant differences between groups on standardized vocabulary and comprehension measures. The researchers were upfront about this, noting that the protocol was primarily designed to target fluency — and acknowledged that vocabulary and comprehension support may need to be more explicitly integrated in future versions.</p>
+
+  <p>The results were especially strong for fourth graders, suggesting this kind of structured challenge may be particularly effective for upper elementary readers who have basic decoding skills but lack the fluency and stamina to handle grade-level texts.</p>
+
+  <h2>Why This Matters</h2>
+
+  <p>This study adds to a growing body of research suggesting that we may be underestimating what struggling readers can handle when given the right support. The conventional approach — leveled texts matched to a student's current reading ability — keeps students comfortable, but comfort alone doesn't drive growth.</p>
+
+  <p>The Read Like Us protocol doesn't just throw hard texts at kids and hope for the best. It wraps challenging material in a structured sequence of support: modeling, group practice, paired practice, independent practice, and performance. By the time students read the text on their own, they've already encountered it four times.</p>
+
+  <p>It's also notable that the researchers deliberately chose texts across a wide range of genres and topics rather than using a single controlled curriculum. The variety kept students engaged while exposing them to diverse vocabulary and text structures — something easier, leveled texts often can't provide.</p>
+
+  <div class="takeaway">
+    <h2>Key Takeaways for Educators</h2>
+    <p><strong>Don't shy away from complex text.</strong> With the right scaffolding, below-level readers can benefit from texts above their tested reading level.</p>
+    <p><strong>Repeated reading works — especially with structure.</strong> The five-read sequence moves from maximum support to independence, building confidence along the way.</p>
+    <p><strong>Variety matters.</strong> Wide reading across genres exposes students to richer vocabulary and keeps engagement high.</p>
+    <p><strong>Fluency is necessary but not sufficient.</strong> The protocol boosted fluency but didn't move the needle on comprehension. Pairing fluency work with explicit comprehension instruction remains essential.</p>
+    <p><strong>30 minutes a day adds up.</strong> Fifty sessions of focused fluency practice produced measurable, accelerated gains.</p>
+  </div>
+
+  <h2>The Bottom Line</h2>
+
+  <p>Read Like Us is a work in progress — its creators say so themselves. But the pilot results offer a compelling proof of concept: struggling readers can make faster fluency gains when they're challenged with complex, engaging texts inside a well-designed support structure.</p>
+
+  <p>The next time you reach for the "easy" book for a struggling reader, consider this: maybe what they need isn't less challenge. Maybe they need better scaffolding <em>for</em> the challenge.</p>
+
+  <div class="source-box">
+    <strong>Source:</strong> Downs, J., &amp; Young, C. (2025). Complex text and fluency: Evaluating the Read Like Us protocol with third and fourth grade students. <em>The Journal of Educational Research</em>, 118(1), 51–62. <a href="https://doi.org/10.1080/00220671.2024.2436875">doi.org/10.1080/00220671.2024.2436875</a>
+  </div>
+</article>
+
+</body>
+</html>
