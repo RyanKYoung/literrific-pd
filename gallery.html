@@ -241,6 +241,21 @@
     letter-spacing: .08em;
   }
 
+  /* ── Newsletter ── */
+  .newsletter-section { background: var(--charcoal); padding: 4.5rem 2rem; }
+  .newsletter-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+  .newsletter-text .section-label { background: rgba(255,255,255,.12); color: rgba(255,255,255,.75); }
+  .newsletter-text h2 { color: var(--white); margin-bottom: .75rem; }
+  .newsletter-text p { color: rgba(255,255,255,.65); font-size: 1rem; line-height: 1.65; margin: 0; }
+  .newsletter-fields { display: flex; gap: .75rem; }
+  .newsletter-fields input[type="email"] { flex: 1; padding: .85rem 1.15rem; border-radius: 6px; border: 1.5px solid rgba(255,255,255,.2); background: rgba(255,255,255,.08); color: var(--white); font-family: 'Geologica', sans-serif; font-size: .95rem; outline: none; transition: border-color .15s; }
+  .newsletter-fields input::placeholder { color: rgba(255,255,255,.4); }
+  .newsletter-fields input:focus { border-color: var(--teal); }
+  .newsletter-fields button { background: var(--gold); color: var(--charcoal); border: none; padding: .85rem 1.5rem; border-radius: 6px; font-family: 'Geologica', sans-serif; font-size: .92rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background .15s; }
+  .newsletter-fields button:hover { background: #e6af00; }
+  .newsletter-fine { font-size: .78rem; color: rgba(255,255,255,.4); margin-top: .65rem; }
+  @media (max-width: 700px) { .newsletter-inner { grid-template-columns: 1fr; gap: 1.75rem; } .newsletter-fields { flex-direction: column; } }
+
   /* ── Footer ── */
   footer {
     background: var(--white);
@@ -317,7 +332,7 @@
 <!-- Page Header -->
 <div class="page-header">
   <span class="section-label">In the Room</span>
-  <h1>LiTerrific PD <em>in Action</em></h1>
+  <h1>LiTerrific Professional Development <em>in Action</em></h1>
   <p>From regional conferences to district training days — a look inside the sessions transforming literacy instruction.</p>
 </div>
 
@@ -327,7 +342,7 @@
 
     <div class="masonry-item" data-index="0">
       <img src="Session%20Photos/ece12723-5e80-4bd1-854a-7d13712c36a6.jpeg" alt="The Simple View of Reading" loading="lazy">
-      <div class="masonry-caption">The Simple View of Reading — packed district PD</div>
+      <div class="masonry-caption">The Simple View of Reading — packed district session</div>
     </div>
 
     <div class="masonry-item" data-index="1">
@@ -417,7 +432,7 @@
 
     <div class="masonry-item" data-index="18">
       <img src="Session%20Photos/1d79ba64-8e8b-4187-814a-9e16440e922f.jpeg" alt="Session celebration" loading="lazy">
-      <div class="masonry-caption">Post-PD celebration</div>
+      <div class="masonry-caption">Post-session celebration</div>
     </div>
 
   </div>
@@ -434,6 +449,28 @@
   </div>
   <div class="lightbox-counter" id="lightbox-counter"></div>
 </div>
+
+<!-- Newsletter -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="newsletter-text">
+        <span class="section-label">Stay Up to Date</span>
+        <h2>Resources, Research, and <em>What's Working in Classrooms</em></h2>
+        <p>New guides, podcast episodes, and practical strategies — delivered to your inbox.</p>
+      </div>
+      <div>
+        <form class="newsletter-form" action="https://formspree.io/f/xpqypleo" method="POST">
+          <div class="newsletter-fields">
+            <input type="email" name="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe →</button>
+          </div>
+          <p class="newsletter-fine">No spam. Unsubscribe anytime.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Footer -->
 <footer>

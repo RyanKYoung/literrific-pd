@@ -385,9 +385,10 @@ comm<!DOCTYPE html>
     display: flex;
     align-items: flex-start;
     gap: 2rem;
-    background: rgba(255,255,255,.1);
+    background: rgba(255,255,255,.95);
     border-radius: 16px;
     padding: 2.25rem 2.5rem;
+    box-shadow: 0 4px 28px rgba(0,0,0,.18);
   }
   .facilitators-icon {
     font-size: 2.5rem;
@@ -395,23 +396,71 @@ comm<!DOCTYPE html>
     flex-shrink: 0;
     margin-top: .15rem;
   }
-  .facilitators-body .section-label { color: rgba(255,255,255,.7); }
   .facilitators-body h3 {
     font-family: 'Lora', serif;
     font-size: 1.35rem;
     font-weight: 700;
-    color: var(--white);
+    color: var(--charcoal);
     margin: .35rem 0 .9rem;
     line-height: 1.35;
   }
   .facilitators-body p {
     font-size: .96rem;
-    color: rgba(255,255,255,.88);
+    color: var(--muted);
     line-height: 1.75;
     margin: 0;
   }
+  .facilitators-vibe { color: var(--teal) !important; font-style: italic; }
   @media (max-width: 600px) {
     .facilitators-callout { flex-direction: column; gap: 1rem; padding: 1.5rem; }
+  }
+
+  /* ── Newsletter ── */
+  .newsletter-section { background: var(--charcoal); padding: 4.5rem 2rem; }
+  .newsletter-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .newsletter-text .section-label { background: rgba(255,255,255,.12); color: rgba(255,255,255,.75); }
+  .newsletter-text h2 { color: var(--white); margin-bottom: .75rem; }
+  .newsletter-text p { color: rgba(255,255,255,.65); font-size: 1rem; line-height: 1.65; margin: 0; }
+  .newsletter-fields { display: flex; gap: .75rem; }
+  .newsletter-fields input[type="email"] {
+    flex: 1;
+    padding: .85rem 1.15rem;
+    border-radius: 6px;
+    border: 1.5px solid rgba(255,255,255,.2);
+    background: rgba(255,255,255,.08);
+    color: var(--white);
+    font-family: 'Geologica', sans-serif;
+    font-size: .95rem;
+    outline: none;
+    transition: border-color .15s;
+  }
+  .newsletter-fields input::placeholder { color: rgba(255,255,255,.4); }
+  .newsletter-fields input:focus { border-color: var(--teal); }
+  .newsletter-fields button {
+    background: var(--gold);
+    color: var(--charcoal);
+    border: none;
+    padding: .85rem 1.5rem;
+    border-radius: 6px;
+    font-family: 'Geologica', sans-serif;
+    font-size: .92rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .15s;
+  }
+  .newsletter-fields button:hover { background: #e6af00; }
+  .newsletter-fine { font-size: .78rem; color: rgba(255,255,255,.4); margin-top: .65rem; }
+  @media (max-width: 700px) {
+    .newsletter-inner { grid-template-columns: 1fr; gap: 1.75rem; }
+    .newsletter-fields { flex-direction: column; }
   }
 
   /* ── Our Approach ── */
@@ -833,7 +882,7 @@ comm<!DOCTYPE html>
 <section class="hero">
   <div class="container">
     <h1>The Science of Reading,<br><em>Artfully Taught</em></h1>
-    <p>Evidence-based PD that teachers actually look forward to — delivered virtually, on-site, or through ongoing coaching. Grounded in the Science of Reading.</p>
+    <p>Evidence-based Professional Development that teachers actually look forward to — delivered virtually, on-site, or through ongoing coaching. Grounded in the Science of Reading.</p>
     <p class="hero-energy">Come ready to laugh, think, and leave with a dozen strategies before lunch.</p>
     <div class="hero-ctas">
       <a href="#services" class="btn-gold">Our Services ↓</a>
@@ -869,7 +918,7 @@ comm<!DOCTYPE html>
 <section class="services" id="services">
   <div class="container">
     <span class="section-label">What We Offer</span>
-    <h2>PD That Meets You<br><em>Where You Are</em></h2>
+    <h2>Professional Development That Meets You<br><em>Where You Are</em></h2>
     <p class="section-sub">Whether your team is across town or across the country, we bring structured literacy training directly to your teachers — in the format that works best for your district.</p>
     <div class="services-grid">
 
@@ -885,7 +934,7 @@ comm<!DOCTYPE html>
         <img class="service-img" src="images/teacher-children-reading.avif" alt="Teacher reading with children" loading="lazy">
         <div class="service-icon">🏫</div>
         <h3>On-Site Training</h3>
-        <p>We come to you. Full-day and multi-day PD experiences at your school or district offices — designed around your teachers' schedules, grade bands, and current instructional challenges.</p>
+        <p>We come to you. Full-day and multi-day Professional Development experiences at your school or district offices — designed around your teachers' schedules, grade bands, and current instructional challenges.</p>
         <a href="contact.html" class="service-link">Get a quote →</a>
       </div>
 
@@ -916,7 +965,7 @@ comm<!DOCTYPE html>
         <span class="section-label">Research Partner</span>
         <h2>The Science Behind<br><em>Every Session</em></h2>
         <p class="expert-bio">Dr. Chase Young began his career as a 2nd-grade teacher in Title I schools before earning his PhD from the University of North Texas (2012). Named the Barbara G. Silverman Endowed Chair in Literacy at Sam Houston State University in 2015, he is Chief Literacy Officer at LiTerrific and Editor of <em>Reading Research Quarterly</em> (2026–2030). His classroom roots are the foundation of everything LiTerrific does.</p>
-        <p class="expert-bio">Dr. Young's research on reading fluency, literacy intervention, and evidence-based instruction has shaped policy and practice nationally. He is Series Editor for DK Publishing / Penguin Random House's <em>The Science of Reading</em> series and a collaborator on a $2.8M NSF grant focused on literacy transformation at Hispanic-Serving Institutions. Every LiTerrific PD program is built on his published, peer-reviewed work.</p>
+        <p class="expert-bio">Dr. Young's research on reading fluency, literacy intervention, and evidence-based instruction has shaped policy and practice nationally. He is Series Editor for DK Publishing / Penguin Random House's <em>The Science of Reading</em> series and a collaborator on a $2.8M NSF grant focused on literacy transformation at Hispanic-Serving Institutions. Every LiTerrific Professional Development program is built on his published, peer-reviewed work.</p>
         <ul class="expert-creds">
           <li>Barbara G. Silverman Endowed Chair in Literacy · Sam Houston State University</li>
           <li>Editor, <em>Reading Research Quarterly</em> (2026–2030)</li>
@@ -939,9 +988,9 @@ comm<!DOCTYPE html>
     <div class="facilitators-callout">
       <div class="facilitators-icon">🎓</div>
       <div class="facilitators-body">
-        <span class="section-label">Who Delivers LiTerrific PD</span>
+        <span class="section-label">Who Delivers LiTerrific Professional Development</span>
         <h3>University Faculty. Field Practitioners. Real Classroom Expertise.</h3>
-        <p>Our facilitators are active professors at research universities and literacy researchers whose work appears in the field's top peer-reviewed journals. They are published authors, recipients of national literacy awards, leaders of professional organizations, and — critically — former K–5 classroom teachers and district instructional coaches. They hold doctoral degrees in literacy, reading education, and curriculum &amp; instruction, and bring hands-on expertise in the Science of Reading, structured literacy, reading fluency, comprehension, and dyslexia intervention. Many have delivered PD across dozens of states and lead national literacy initiatives. You're not getting a generalist trainer. You're getting the field's leading practitioners.</p>
+        <p>Our facilitators are active professors at research universities and literacy researchers whose work appears in the field's top peer-reviewed journals. They are published authors, recipients of national literacy awards, leaders of professional organizations, and — critically — former K–5 classroom teachers and district instructional coaches. They hold doctoral degrees in literacy, reading education, and curriculum &amp; instruction, and bring hands-on expertise in the Science of Reading, structured literacy, reading fluency, comprehension, and dyslexia intervention. Many have delivered professional development across dozens of states and lead national literacy initiatives. You're not getting a generalist trainer. You're getting the field's leading practitioners.</p>
         <p class="facilitators-vibe">This isn't sit-and-get. Expect movement, real classroom demonstrations, and more than a few laughs — alongside the research.</p>
       </div>
     </div>
@@ -975,14 +1024,14 @@ comm<!DOCTYPE html>
             <div class="approach-num">3</div>
             <div>
               <h4>Customized to Your Context</h4>
-              <p>We audit your current curriculum and instructional practices first, so the PD your teachers receive is tailored to where they actually are — not a generic one-size-fits-all program.</p>
+              <p>We audit your current curriculum and instructional practices first, so the professional development your teachers receive is tailored to where they actually are — not a generic one-size-fits-all program.</p>
             </div>
           </div>
           <div class="approach-point">
             <div class="approach-num">4</div>
             <div>
               <h4>Built for Sustainability</h4>
-              <p>We build internal capacity. Through coaching and leadership development, your instructional coaches and lead teachers leave equipped to sustain the work long after the PD ends.</p>
+              <p>We build internal capacity. Through coaching and leadership development, your instructional coaches and lead teachers leave equipped to sustain the work long after the training ends.</p>
             </div>
           </div>
         </div>
@@ -1086,6 +1135,28 @@ comm<!DOCTYPE html>
     <h2>Ready to Strengthen Literacy Across Your School or District?</h2>
     <p>Tell us about your teachers, your timeline, and your goals. We'll build a plan together.</p>
     <a href="contact.html" class="btn-gold">Get in Touch →</a>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="newsletter-text">
+        <span class="section-label">Stay Up to Date</span>
+        <h2>Resources, Research, and <em>What's Working in Classrooms</em></h2>
+        <p>New guides, podcast episodes, and practical strategies — delivered to your inbox.</p>
+      </div>
+      <div>
+        <form class="newsletter-form" action="https://formspree.io/f/xpqypleo" method="POST">
+          <div class="newsletter-fields">
+            <input type="email" name="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe →</button>
+          </div>
+          <p class="newsletter-fine">No spam. Unsubscribe anytime.</p>
+        </form>
+      </div>
+    </div>
   </div>
 </section>
 
