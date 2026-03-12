@@ -1,0 +1,15 @@
+# Internal docs — keep off GitHub
+*.pptx
+*.docx
+DURHAM*.pdf
+Jake*.pdf
+YoungC*.pdf
+
+# Source assets not needed in repo
+LiTerrific Logo RGB.jpg
+
+# Claude memory
+.claude/
+
+# Temp files
+favicon-debug.png
