@@ -223,6 +223,7 @@
   .resource-badge.webinar  { color: #5a6ea0; background: #eaecf5; }
   .resource-badge.guide    { color: #7a5c2a; background: var(--tan-light); }
   .resource-badge.podcast  { color: #6f2f01; background: var(--gold-light); }
+  .resource-badge.essay    { color: var(--teal-dark); background: var(--teal-light); }
 
   .resource-card h3 {
     font-family: 'Lora', serif;
@@ -601,6 +602,7 @@
   <button class="filter-tab" data-filter="webinar">Webinar Recordings</button>
   <button class="filter-tab" data-filter="podcast">Podcasts</button>
   <button class="filter-tab" data-filter="guide">Guides</button>
+  <button class="filter-tab" data-filter="essay">Essays</button>
 </div>
 
 <!-- Resources Grid -->
@@ -701,15 +703,14 @@
         </div>
       </article>
 
-      <!-- Guide 2 — Coming Soon -->
-      <article class="resource-card" data-category="guide">
-        <div class="resource-thumb guide">📋</div>
+      <!-- Essay 1 — LIVE -->
+      <article class="resource-card" data-category="essay">
+        <div class="resource-thumb">✍️</div>
         <div class="resource-body">
-          <span class="resource-badge guide">Guide</span>
-          <h3>Planning Your District Professional Development Calendar: A Literacy-First Approach</h3>
-          <p class="resource-date">Coming Soon</p>
-          <p>A template and planning guide for district leaders who want to structure a full year of professional development around the Science of Reading.</p>
-          <a href="#" class="resource-link">Download →</a>
+          <span class="resource-badge essay">Essay</span>
+          <h3>Literacy is a Privilege</h3>
+          <p>Two thirds of American nine- and ten-year-olds can't read proficiently — and the people with the power to fix it can't feel the problem. A case for treating literacy as a human right.</p>
+          <a href="blogs/Literacy_is_a_Privilege.html" class="resource-link">Read more →</a>
         </div>
       </article>
 
@@ -718,12 +719,6 @@
     <div class="coming-soon-banner" id="no-results" style="display:none;">
       <h3>More resources coming soon</h3>
       <p>We're actively publishing new articles, webinar recordings, and guides. Check back often — or subscribe below to get notified.</p>
-    </div>
-
-    <div class="coming-soon-banner" style="margin-top: 2rem;">
-      <h3>More content on the way</h3>
-      <p>New articles, webinar recordings, and downloadable guides are published regularly. Subscribe to be the first to know.</p>
-      <a href="#newsletter" class="btn-primary">Get notified ↓</a>
     </div>
 
   </div>

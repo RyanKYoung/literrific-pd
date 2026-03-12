@@ -3,235 +3,233 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Why Readers' Theater Might Be the Key to Engaging Boys Who Struggle With Reading</title>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<title>Why Readers' Theater Might Be the Key to Engaging Boys Who Struggle With Reading | LiTerrific PD</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Geologica:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <style>
   :root {
-    --deep: #0f1729;
-    --warm-white: #f9f6f1;
-    --amber: #d4883a;
-    --teal: #2a7a6e;
-    --slate: #4a5568;
-    --light-teal: #e8f4f1;
-    --border: #e2ddd5;
+    --charcoal: #161616;
+    --teal: #01826d;
+    --teal-dark: #005e4f;
+    --teal-light: #dbfff9;
+    --gold: #ffc300;
+    --gold-light: #fff8e2;
+    --tan: #c8b99a;
+    --tan-light: #f5f0e8;
+    --muted: #5d6c7b;
+    --white: #ffffff;
+    --border: #e4ddd3;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--warm-white);
-    color: var(--deep);
-    line-height: 1.78;
+    font-family: 'Geologica', sans-serif;
+    background: var(--white);
+    color: var(--charcoal);
+    line-height: 1.75;
     font-size: 18px;
   }
 
-  .hero {
-    background: linear-gradient(135deg, #0f1729 0%, #1a2744 50%, #1e3048 100%);
-    color: var(--warm-white);
-    padding: 80px 24px 64px;
-    position: relative;
-    overflow: hidden;
+  /* ── Nav ── */
+  nav {
+    background: var(--charcoal);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 68px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
 
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 6px;
-    background: linear-gradient(90deg, var(--amber) 0%, var(--teal) 100%);
+  .nav-logo {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: -.01em;
+  }
+
+  .nav-logo span { color: var(--teal); }
+
+  .nav-back {
+    font-family: 'Geologica', sans-serif;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--teal);
+    text-decoration: none;
+    padding: .5rem 1.1rem;
+    border-radius: 6px;
+    transition: background .15s;
+  }
+
+  .nav-back:hover { background: var(--teal-dark); }
+
+  /* ── Hero ── */
+  .hero {
+    background: var(--charcoal);
+    color: var(--white);
+    padding: 72px 24px 60px;
   }
 
   .hero-inner {
     max-width: 720px;
     margin: 0 auto;
-    position: relative;
   }
 
   .category {
-    font-size: 12px;
+    display: inline-block;
+    font-size: .7rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--amber);
-    margin-bottom: 24px;
-    display: inline-block;
-    border: 1px solid rgba(212,136,58,0.35);
-    padding: 4px 14px;
-    border-radius: 2px;
+    letter-spacing: .12em;
+    color: var(--charcoal);
+    background: var(--teal-light);
+    padding: .25rem .75rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
   }
 
   h1 {
-    font-family: 'Libre Baskerville', serif;
-    font-size: clamp(30px, 4.5vw, 44px);
+    font-family: 'Lora', serif;
+    font-size: clamp(28px, 4.5vw, 44px);
     font-weight: 700;
     line-height: 1.2;
-    margin-bottom: 24px;
+    margin-bottom: 1.25rem;
+    letter-spacing: -.02em;
   }
 
   .subtitle {
-    font-size: 19px;
+    font-size: 1.1rem;
     font-weight: 300;
-    color: rgba(249,246,241,0.65);
-    max-width: 620px;
+    color: rgba(255,255,255,.65);
+    max-width: 600px;
     line-height: 1.65;
   }
 
   .meta {
-    margin-top: 36px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(249,246,241,0.1);
-    font-size: 14px;
-    color: rgba(249,246,241,0.45);
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255,255,255,.1);
+    font-size: .85rem;
+    color: rgba(255,255,255,.45);
     display: flex;
-    gap: 24px;
+    gap: 1.5rem;
     flex-wrap: wrap;
   }
 
+  /* ── Article body ── */
   article {
     max-width: 720px;
     margin: 0 auto;
-    padding: 56px 24px 80px;
+    padding: 52px 24px 80px;
   }
 
-  article p { margin-bottom: 24px; }
+  article p { margin-bottom: 1.5rem; }
 
   h2 {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 26px;
+    font-family: 'Lora', serif;
+    font-size: 1.6rem;
     font-weight: 700;
-    margin: 52px 0 20px;
+    margin: 3rem 0 1.1rem;
+    color: var(--charcoal);
+    letter-spacing: -.02em;
     line-height: 1.3;
   }
 
   .lead {
-    font-size: 21px;
+    font-size: 1.2rem;
     font-weight: 300;
-    color: var(--slate);
+    color: var(--muted);
     line-height: 1.75;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
   }
 
+  /* ── Pull quote ── */
   .pull-quote {
-    margin: 40px 0;
-    padding: 32px 0;
-    border-top: 2px solid var(--deep);
-    border-bottom: 2px solid var(--deep);
+    margin: 2.25rem 0;
+    padding: 1.75rem 0;
+    border-top: 2px solid var(--charcoal);
+    border-bottom: 2px solid var(--charcoal);
   }
 
   .pull-quote p {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 22px;
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
     font-style: italic;
     line-height: 1.55;
-    color: var(--deep);
+    color: var(--charcoal);
     margin-bottom: 0;
   }
 
-  .finding-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin: 40px 0;
-  }
-
-  .finding-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 28px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .finding-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-  }
-
-  .finding-card.boys::before { background: var(--teal); }
-  .finding-card.girls::before { background: var(--amber); }
-
-  .finding-card .tag {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-  }
-
-  .finding-card.boys .tag { color: var(--teal); }
-  .finding-card.girls .tag { color: var(--amber); }
-
-  .finding-card p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 0;
-    color: var(--slate);
-  }
-
+  /* ── Study box ── */
   .study-box {
-    background: var(--light-teal);
-    border-radius: 10px;
-    padding: 32px;
-    margin: 40px 0;
+    background: var(--teal-light);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2.25rem 0;
   }
 
   .study-box h3 {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 20px;
-    margin-bottom: 16px;
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1.1rem;
+    color: var(--charcoal);
   }
 
   .study-detail {
     display: flex;
-    gap: 12px;
-    margin-bottom: 10px;
-    font-size: 16px;
+    gap: .75rem;
+    margin-bottom: .65rem;
+    font-size: .95rem;
     align-items: baseline;
   }
 
   .study-detail .label {
     font-weight: 600;
     flex-shrink: 0;
-    min-width: 100px;
-    color: var(--teal);
-    font-size: 13px;
+    min-width: 90px;
+    color: var(--teal-dark);
+    font-size: .75rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: .08em;
   }
 
+  /* ── How it works / week flow ── */
   .how-it-works {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 36px;
-    margin: 40px 0;
+    background: var(--gold-light);
+    border: 1px solid rgba(255,195,0,.35);
+    border-radius: 12px;
+    padding: 2rem 2.25rem;
+    margin: 2.25rem 0;
   }
 
   .how-it-works h3 {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 20px;
-    margin-bottom: 8px;
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: .5rem;
+    color: var(--charcoal);
   }
 
   .how-it-works .intro {
-    color: var(--slate);
-    font-size: 16px;
-    margin-bottom: 24px;
+    color: var(--muted);
+    font-size: .95rem;
+    margin-bottom: 1.5rem;
   }
 
   .week-flow {
     display: flex;
     gap: 0;
     position: relative;
-    margin-bottom: 8px;
+    margin-bottom: .5rem;
   }
 
   .week-flow::after {
@@ -241,7 +239,7 @@
     left: 24px;
     right: 24px;
     height: 2px;
-    background: var(--border);
+    background: var(--tan);
     z-index: 0;
   }
 
@@ -256,55 +254,104 @@
     width: 40px;
     height: 40px;
     background: var(--teal);
-    color: white;
+    color: var(--white);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 13px;
-    font-weight: 600;
-    margin: 0 auto 10px;
+    font-family: 'Lora', serif;
+    font-size: .85rem;
+    font-weight: 700;
+    margin: 0 auto .65rem;
   }
 
-  .day-dot.final { background: var(--amber); }
+  .day-dot.final { background: var(--gold); color: var(--charcoal); }
 
   .day-label {
-    font-size: 12px;
-    color: var(--slate);
+    font-size: .75rem;
+    color: var(--muted);
     font-weight: 500;
     line-height: 1.4;
   }
 
-  .takeaway {
-    background: var(--deep);
-    color: var(--warm-white);
+  /* ── Finding grid ── */
+  .finding-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+    margin: 2.25rem 0;
+  }
+
+  .finding-card {
+    background: var(--tan-light);
     border-radius: 10px;
-    padding: 36px;
-    margin: 48px 0;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .finding-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  .finding-card.boys::before { background: var(--teal); }
+  .finding-card.girls::before { background: var(--gold); }
+
+  .finding-card .tag {
+    font-size: .72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: .65rem;
+    display: block;
+  }
+
+  .finding-card.boys .tag { color: var(--teal-dark); }
+  .finding-card.girls .tag { color: #8a6a00; }
+
+  .finding-card p {
+    font-size: .92rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+    color: var(--muted);
+  }
+
+  /* ── Takeaway ── */
+  .takeaway {
+    background: var(--charcoal);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 2.25rem;
+    margin: 3rem 0;
   }
 
   .takeaway h2 {
-    color: var(--warm-white);
+    color: var(--white);
     margin-top: 0;
-    font-size: 22px;
+    font-size: 1.35rem;
   }
 
   .takeaway p {
-    color: rgba(249,246,241,0.8);
-    margin-bottom: 16px;
-    font-size: 17px;
+    color: rgba(255,255,255,.8);
+    margin-bottom: 1rem;
+    font-size: 1rem;
   }
 
   .takeaway p:last-child { margin-bottom: 0; }
 
+  /* ── Source box ── */
   .source-box {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 28px;
-    margin-top: 48px;
-    font-size: 15px;
-    color: var(--slate);
+    background: var(--tan-light);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-top: 3rem;
+    font-size: .9rem;
+    color: var(--muted);
   }
 
   .source-box a {
@@ -313,23 +360,33 @@
     border-bottom: 1px solid var(--teal);
   }
 
+  .source-box a:hover { opacity: .8; }
+
   strong { font-weight: 600; }
 
-  @media (max-width: 600px) {
-    .hero { padding: 56px 20px 48px; }
-    article { padding: 40px 20px 60px; }
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    .nav-logo span { display: none; }
+    .hero { padding: 52px 20px 44px; }
+    article { padding: 36px 20px 60px; }
     .finding-grid { grid-template-columns: 1fr; }
-    .week-flow { flex-wrap: wrap; gap: 12px; }
+    .how-it-works { padding: 1.5rem; }
+    .week-flow { flex-wrap: wrap; gap: .75rem; }
     .week-flow::after { display: none; }
-    .day { flex: none; width: calc(33% - 8px); }
+    .day { flex: none; width: calc(33% - .5rem); }
   }
 </style>
 </head>
 <body>
 
+<nav>
+  <a href="../index.html" class="nav-logo">LiTerrific <span>Professional Development</span></a>
+  <a href="../resources.html" class="nav-back">← Resources</a>
+</nav>
+
 <header class="hero">
   <div class="hero-inner">
-    <div class="category">Literacy &amp; Gender</div>
+    <span class="category">Literacy &amp; Engagement</span>
     <h1>Why Readers' Theater Might Be the Key to Engaging Boys Who Struggle With Reading</h1>
     <p class="subtitle">A Finnish study finds that giving struggling readers a performance goal changes the game — especially for boys.</p>
     <div class="meta">
@@ -425,11 +482,11 @@
 
   <div class="finding-grid">
     <div class="finding-card boys">
-      <div class="tag">Boys</div>
+      <span class="tag">Boys</span>
       <p>Took longer to warm up to Readers' Theater, but engagement increased over time. The performance goal was especially meaningful — boys in the goal condition reported learning more acting skills and deeper text immersion.</p>
     </div>
     <div class="finding-card girls">
-      <div class="tag">Girls</div>
+      <span class="tag">Girls</span>
       <p>Were more immediately engaged across both conditions. Reported similar levels of learning and text immersion whether or not there was a performance goal.</p>
     </div>
   </div>
