@@ -17,20 +17,18 @@ var SHEET_ID  = '1hYmPwbsipdIkz34VSmrLskA7HHxBuxx_x5spRfhOaG4';
 var FROM_NAME = 'Chase Young & the LiTerrific Team';
 
 var RESOURCE_LINKS = {
-  'readers-theater':     'PASTE_READERS_THEATER_DRIVE_LINK_HERE',
   'read-like-me':        'PASTE_READ_LIKE_ME_DRIVE_LINK_HERE',
   'read-to-impress':     'PASTE_READ_TO_IMPRESS_DRIVE_LINK_HERE',
   'synergistic-lessons': 'PASTE_SYNERGISTIC_LESSONS_DRIVE_LINK_HERE',
-  'poetry':              'PASTE_POETRY_RESOURCES_DRIVE_LINK_HERE',
+  'fluency':             'PASTE_FLUENCY_DRIVE_LINK_HERE',
   'pd':                  'https://literacylive.org/contact.html'
 };
 
 var RESOURCE_LABELS = {
-  'readers-theater':     'Readers Theater Resources',
   'read-like-me':        'Read Like Me Resources',
-  'read-to-impress':     'Read to Impress Resources',
+  'read-to-impress':     'Read Two Impress Resources',
   'synergistic-lessons': 'Creating Synergistic Lessons',
-  'poetry':              'Poetry Resources',
+  'fluency':             'Performance Based Fluency',
   'pd':                  'Professional Development Information'
 };
 
@@ -74,8 +72,8 @@ function greeting(name) {
 
 function ensureHeader(sheet) {
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(['Timestamp', 'Form Type', 'Name', 'Email', 'Details', 'Source']);
-    sheet.getRange(1, 1, 1, 6).setFontWeight('bold');
+    sheet.appendRow(['Timestamp', 'Form Type', 'Name', 'Email', 'Details', 'Source', 'Stay Updated', 'District', 'State']);
+    sheet.getRange(1, 1, 1, 9).setFontWeight('bold');
   }
 }
 
@@ -117,7 +115,7 @@ function handleNewsletter(params) {
 
   var sheet = getSheet();
   ensureHeader(sheet);
-  sheet.appendRow([new Date(), 'newsletter', '', email, 'Updates: Yes', source]);
+  sheet.appendRow([new Date(), 'newsletter', '', email, '', source, 'Yes', '', '']);
 
   sendWelcomeEmail(email);
 }
@@ -163,8 +161,6 @@ function handleQuote(params, multiParams) {
 
   var details = [
     role     ? 'Role: ' + role         : '',
-    district ? 'District: ' + district : '',
-    state    ? 'State: ' + state       : '',
     grades   ? 'Grades: ' + grades     : '',
     services ? 'Services: ' + services : '',
     teachers ? 'Teachers: ' + teachers : '',
@@ -173,7 +169,7 @@ function handleQuote(params, multiParams) {
 
   var sheet = getSheet();
   ensureHeader(sheet);
-  sheet.appendRow([new Date(), 'quote', name, email, details, 'contact-form']);
+  sheet.appendRow([new Date(), 'quote', name, email, details, 'contact-form', '', district, state]);
 
   sendQuoteEmail(name, email, district);
 }
@@ -181,25 +177,15 @@ function handleQuote(params, multiParams) {
 function sendQuoteEmail(name, email, district) {
   if (!email) return;
 
-  var districtLine = district ? ' from <strong>' + district + '</strong>' : '';
+  var districtLine = district ? ' at <strong>' + district + '</strong>' : '';
 
   var body =
     '<p style="font-size:1rem;margin-bottom:16px;">' + greeting(name) + '</p>' +
-    '<p style="font-size:1rem;margin-bottom:20px;">Thank you for reaching out' + districtLine + '! ' +
-    'We\'ve received your inquiry and someone from the LiTerrific team will be in touch within one business day.</p>' +
-    '<p style="font-size:1rem;margin-bottom:20px;">In the meantime, feel free to browse our resources or learn more about what a LiTerrific session looks like.</p>' +
-    '<p style="margin:28px 0;">' +
-    '<a href="https://literacylive.org/resources.html" ' +
-    'style="background:#ffc300;color:#161616;font-weight:700;padding:12px 24px;border-radius:6px;text-decoration:none;font-size:.95rem;">' +
-    'Browse Our Resources →' +
-    '</a>' +
-    '</p>' +
-    '<p style="font-size:.92rem;color:#5d6c7b;margin-top:28px;line-height:1.6;">' +
-    'No pressure, no sales pitch — just a conversation about what your students need.' +
-    '</p>' +
+    '<p style="font-size:1rem;margin-bottom:16px;">We are so excited to connect with you' + districtLine + '! ' +
+    'Someone from the LiTerrific team will be in touch with you within 24 hours.</p>' +
     '<p style="font-size:.92rem;margin-top:24px;">— Chase Young &amp; the LiTerrific Team</p>';
 
-  GmailApp.sendEmail(email, 'Your Professional Development Request — LiTerrific', '', {
+  GmailApp.sendEmail(email, 'Your Professional Development Request', '', {
     htmlBody: wrapEmail(body),
     name:     FROM_NAME
   });
@@ -214,12 +200,12 @@ function handleSignup(params) {
   var updatesOptin = params.updates_optin   || 'no';
   var source       = params.source          || 'signup-page';
 
-  var details = (RESOURCE_LABELS[referral] || referral) +
-    (updatesOptin === 'yes' ? ' | Updates: Yes' : '');
+  var details = RESOURCE_LABELS[referral] || referral;
+  var stayUpdated = updatesOptin === 'yes' ? 'Yes' : 'No';
 
   var sheet = getSheet();
   ensureHeader(sheet);
-  sheet.appendRow([new Date(), 'signup', name, email, details, source]);
+  sheet.appendRow([new Date(), 'signup', name, email, details, source, stayUpdated, '', '']);
 
   sendSignupEmail(name, email, referral);
 }
@@ -227,30 +213,118 @@ function handleSignup(params) {
 function sendSignupEmail(name, email, referral) {
   if (!email) return;
 
-  var resourceLink  = RESOURCE_LINKS[referral]  || 'https://literacylive.org/resources.html';
-  var resourceLabel = RESOURCE_LABELS[referral] || 'LiTerrific Resources';
-  var linkReady     = resourceLink.indexOf('PASTE_') === -1;
+  var subject = 'Welcome to the LiTerrific Community';
+  var body;
 
-  var body =
-    '<p style="font-size:1rem;margin-bottom:16px;">' + greeting(name) + '</p>' +
-    '<p style="font-size:1rem;margin-bottom:16px;">Welcome to our community of literacy instruction resources! ' +
-    'You\'re now connected with Chase Young and the LiTerrific team — we\'re glad you\'re here.</p>' +
-    '<p style="font-size:1rem;margin-bottom:16px;">You mentioned you\'re looking for <strong>' + resourceLabel + '</strong>. ' +
-    (linkReady ? 'Here\'s your link:' : 'Those resources are coming soon — in the meantime, browse everything we have available:') +
-    '</p>' +
-    '<p style="margin:28px 0;">' +
-    '<a href="' + (linkReady ? resourceLink : 'https://literacylive.org/resources.html') + '" ' +
-    'style="background:#ffc300;color:#161616;font-weight:700;padding:12px 24px;border-radius:6px;text-decoration:none;font-size:.95rem;">' +
-    (linkReady ? 'Get ' + resourceLabel + ' →' : 'Browse All Resources →') +
-    '</a>' +
-    '</p>' +
-    '<p style="font-size:.92rem;color:#5d6c7b;margin-top:28px;line-height:1.6;">' +
-    'Expect practical strategies, the latest in literacy research, and resources that actually work in real classrooms.<br>' +
-    'Feel free to <a href="https://literacylive.org/contact.html" style="color:#01826d;">reach out</a> any time.' +
-    '</p>' +
-    '<p style="font-size:.92rem;margin-top:24px;">— Chase Young &amp; the LiTerrific Team</p>';
+  if (referral === 'read-like-me') {
+    subject = 'Read Like Us — Resources & Links';
+    body =
+      '<p style="font-size:1rem;margin-bottom:16px;">' + greeting(name) + '</p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">Thanks so much for reaching out. To learn more about Read Like Us you might want to listen to me and Jake were interviewed on Melissa and Lori Love Literacy\'s podcast. Feel free to share it with others; you can find it here:</p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;"><strong>Podcast Episode:</strong><br>' +
+      '<a href="https://literacypodcast.com/?podcast=Buzzsprout-18300927" style="color:#01826d;">https://literacypodcast.com/?podcast=Buzzsprout-18300927</a></p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">In the episode, we talked about the Read Like Us approach to building fluency through purposeful repeated reading with appropriately challenging texts.</p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;"><strong>Article:</strong><br>' +
+      '<a href="https://ila.onlinelibrary.wiley.com/doi/epdf/10.1002/trtr.70024" style="color:#01826d;">https://ila.onlinelibrary.wiley.com/doi/epdf/10.1002/trtr.70024</a></p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;">Many have reached out asking for the intervention texts I mentioned—so here they are:</p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;"><strong>Read Like Us Intervention Texts (Free PDF):</strong><br>' +
+      '<a href="https://www.thebestclass.org/uploads/5/6/2/4/56249715/read_like_us_texts.pdf" style="color:#01826d;">https://www.thebestclass.org/uploads/5/6/2/4/56249715/read_like_us_texts.pdf</a></p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">These texts are designed to support repeated reading routines that build fluency, confidence, and comprehension through authentic reading experiences. Feel free to use them, adapt them for your students, and share them with colleagues.</p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">If you have questions about implementation, differentiation, or ways to make this work in your classroom or school, don\'t hesitate to reach out—I\'m always happy to talk shop and help however I can. And if your team is looking for deeper support or professional learning around fluency, active engagement, or practical literacy instruction, I\'d love to work with you.</p>' +
+      '<p style="font-size:1rem;margin-bottom:24px;">Thanks for everything you do for readers every day.</p>' +
+      '<p style="font-size:.92rem;margin-top:24px;">— Chase Young &amp; the LiTerrific Team</p>';
 
-  GmailApp.sendEmail(email, 'Welcome to the LiTerrific Community', '', {
+  } else if (referral === 'read-to-impress') {
+    subject = 'Read Two Impress — Overview & Resources';
+    body =
+      '<p style="font-size:1rem;margin-bottom:16px;">' + greeting(name) + '</p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">I\'m glad you asked about Read Two Impress (R2I)—it\'s a highly effective, targeted fluency intervention when used as intended.</p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">R2I combines two well-established approaches: repeated reading and the Neurological Impress Method (NIM). In practice, a more proficient reader reads simultaneously with the student—slightly ahead and with strong expression—then the student immediately rereads the same text independently. This creates a built-in gradual release on a single text, moving from supported to independent reading in real time.</p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;"><strong>Article:</strong><br>' +
+      '<a href="https://literacy.virginia.edu/sites/g/files/jsddwu1006/files/2023-03/readtwoimpress.pdf" style="color:#01826d;">https://literacy.virginia.edu/sites/g/files/jsddwu1006/files/2023-03/readtwoimpress.pdf</a></p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;"><strong>Video:</strong><br>' +
+      '<a href="https://youtu.be/X2aGBWeB4rs" style="color:#01826d;">https://youtu.be/X2aGBWeB4rs</a></p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">R2I is grounded in automaticity theory (fluency frees up attention for comprehension) and aligns with Vygotsky\'s Zone of Proximal Development, as students read more challenging text (shoot for grade level text or higher) with support. The power comes from the synergy of modeling + immediate practice—students hear fluent reading and then approximate it right away.</p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;">Research shows strong outcomes. In one study, students who received about 20 minutes of daily R2I for four weeks demonstrated:</p>' +
+      '<ul style="font-size:1rem;margin-bottom:16px;padding-left:1.5rem;">' +
+      '<li>Large gains in oral reading fluency and expression (prosody)</li>' +
+      '<li>Moderate gains in reading comprehension</li>' +
+      '</ul>' +
+      '<p style="font-size:1rem;margin-bottom:8px;"><strong>A few key implementation points:</strong></p>' +
+      '<ul style="font-size:1rem;margin-bottom:16px;padding-left:1.5rem;">' +
+      '<li>Use a more proficient reader (not just peer pairing)</li>' +
+      '<li>Read together, with the model slightly ahead</li>' +
+      '<li>Work in short chunks (paragraphs/pages), then reread</li>' +
+      '<li>Use texts above the student\'s independent level</li>' +
+      '<li>Aim for ~20 minutes daily of focused practice</li>' +
+      '</ul>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">R2I is not just repeated reading—it\'s a purposeful, scaffolded fluency intervention designed for students who struggle with automaticity and expression. When done well, it accelerates fluency and helps bridge to comprehension.</p>' +
+      '<p style="font-size:1rem;margin-bottom:24px;">Let me know if you want help adapting this for small groups or integrating it into your intervention block.</p>' +
+      '<p style="font-size:.92rem;margin-top:24px;">— Chase</p>';
+
+  } else if (referral === 'synergistic-lessons') {
+    subject = 'Creating Synergistic Lessons — Resources';
+    body =
+      '<p style="font-size:1rem;margin-bottom:16px;">' + greeting(name) + '</p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">Thanks for your interest in developing synergistic lessons—this is one of the most impactful shifts teachers can make in literacy instruction.</p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">At a high level, synergistic lessons are about intentionally combining multiple, research-based practices so that the impact is greater than any single strategy used in isolation. Instead of teaching skills in silos, we design instruction where decoding, fluency, vocabulary, and comprehension work together in the same learning experience.</p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;">I break this down in more detail (with classroom examples) in this blog post:</p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;"><strong>Blog:</strong><br>' +
+      '<a href="https://robbreviewblog.com/" style="color:#01826d;">https://robbreviewblog.com/</a></p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;">If you\'d rather see it in action and hear the thinking behind it, these two webinars walk through the approach step-by-step:</p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;"><strong>Webinar (Literacy Matters – Episode 8):</strong><br>' +
+      '<a href="https://www.lwtears.com/literacymatters/season-3/episode-8" style="color:#01826d;">https://www.lwtears.com/literacymatters/season-3/episode-8</a></p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;"><strong>Webinar (edWeb – includes continuation education credit):</strong><br>' +
+      '<a href="https://home.edweb.net/webinar/lwt20240410/" style="color:#01826d;">https://home.edweb.net/webinar/lwt20240410/</a></p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;">A quick example of what this looks like in practice:</p>' +
+      '<ul style="font-size:1rem;margin-bottom:16px;padding-left:1.5rem;">' +
+      '<li>Students engage with a complex text (comprehension + vocabulary)</li>' +
+      '<li>Instruction includes modeled and supported reading (fluency)</li>' +
+      '<li>Students revisit the text through structured rereading or discussion</li>' +
+      '<li>Writing or response tasks reinforce language and meaning-making</li>' +
+      '</ul>' +
+      '<p style="font-size:1rem;margin-bottom:8px;"><strong>The key idea is simple:</strong><br>We don\'t need more time—we need better alignment of what we\'re already doing.</p>' +
+      '<p style="font-size:1rem;margin-bottom:24px;">When lessons are synergistic, students get more meaningful practice, stronger transfer, and ultimately better outcomes. Let me know how I can help!</p>' +
+      '<p style="font-size:.92rem;margin-top:24px;">— Chase</p>';
+
+  } else if (referral === 'fluency') {
+    subject = 'Performance Based Fluency — Resources';
+    body =
+      '<p style="font-size:1rem;margin-bottom:16px;">' + greeting(name) + '</p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">Thanks for connecting! Fluency grows when reading has purpose. Performance gives students a reason to reread.</p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;"><strong>Podcast on Implementing Reader\'s Theater:</strong><br>' +
+      '<a href="https://reachallreaders.com/implement-readers-theater/" style="color:#01826d;">https://reachallreaders.com/implement-readers-theater/</a></p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;"><strong>Blog Post on Implementing Reader\'s Theater:</strong><br>' +
+      '<a href="https://therobbreviewblog.com/uncategorized/readers-theater/" style="color:#01826d;">https://therobbreviewblog.com/uncategorized/readers-theater/</a></p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;"><strong>Giggle Poetry (2017 Archive)</strong> — still one of the best collections of performance-friendly poems out there:<br>' +
+      '<a href="https://web.archive.org/web/20170605121007/http://gigglepoetry.com/poemcategories.aspx" style="color:#01826d;">https://web.archive.org/web/20170605121007/http://gigglepoetry.com/poemcategories.aspx</a></p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;">You can also grab free Reader\'s Theater scripts, research, and more at:<br>' +
+      '<a href="https://www.thebestclass.org" style="color:#01826d;">https://www.thebestclass.org</a></p>' +
+      '<p style="font-size:1rem;margin-bottom:8px;">More literacy ideas and classroom tools:<br>' +
+      '<a href="https://justtwoteachers.com" style="color:#01826d;">https://justtwoteachers.com</a><br>' +
+      '<a href="https://creativeenglishteacher.com" style="color:#01826d;">https://creativeenglishteacher.com</a></p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">Feel free to pass these along to your colleagues. Good literacy instruction spreads teacher to teacher.</p>' +
+      '<p style="font-size:1rem;margin-bottom:24px;">And if your school or district wants help building a clear, practical fluency plan — from intervention to whole-class routines — I\'d love to keep the conversation going.</p>' +
+      '<p style="font-size:1rem;margin-bottom:24px;">Thanks again for the work you\'re doing for readers across Nevada. Keep going. It matters.</p>' +
+      '<p style="font-size:.92rem;margin-top:24px;">— Chase</p>';
+
+  } else if (referral === 'pd') {
+    subject = 'Your Professional Development Request';
+    body =
+      '<p style="font-size:1rem;margin-bottom:16px;">' + greeting(name) + '</p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">We are so excited to connect with you! ' +
+      'Someone from the LiTerrific team will be in touch with you within 24 hours.</p>' +
+      '<p style="font-size:.92rem;margin-top:24px;">— Chase Young &amp; the LiTerrific Team</p>';
+
+  } else {
+    body =
+      '<p style="font-size:1rem;margin-bottom:16px;">' + greeting(name) + '</p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">Thanks for connecting with us! We\'re glad you\'re here. ' +
+      'Feel free to reach out any time.</p>' +
+      '<p style="font-size:.92rem;margin-top:24px;">— Chase Young &amp; the LiTerrific Team</p>';
+  }
+
+  GmailApp.sendEmail(email, subject, '', {
     htmlBody: wrapEmail(body),
     name:     FROM_NAME
   });
