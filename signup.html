@@ -387,12 +387,13 @@
       <div id="form-content">
         <h2>Get the resources</h2>
         <p class="form-sub">Fill in your info and we'll send you what you're looking for.</p>
-        <form id="signup-form" action="https://formspree.io/f/xbdzbkor" method="POST">
+        <iframe name="hidden-submit" style="display:none"></iframe>
+        <form id="signup-form" action="https://script.google.com/macros/s/AKfycbylNy2SUrdRbA7XfRnF81QyMkqBnXCjgdKCVFqgyV2HGfJiyEAL-6WSb9h7qbCLfno0zw/exec" method="POST" target="hidden-submit">
           <input type="hidden" name="source" value="signup-page">
 
           <div class="form-group">
-            <label for="name">First name</label>
-            <input type="text" id="name" name="name" placeholder="Your first name" required>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
           </div>
 
           <div class="form-group">
@@ -452,35 +453,15 @@
 </footer>
 
 <script>
-  document.getElementById('signup-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
+  document.getElementById('signup-form').addEventListener('submit', function(e) {
     const btn = document.getElementById('submit-btn');
     btn.textContent = 'Sending…';
     btn.disabled = true;
-
-    const data = new FormData(this);
-    const checkbox = document.getElementById('updates');
-    if (!checkbox.checked) data.delete('updates_optin');
-
-    try {
-      const res = await fetch(this.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        document.getElementById('form-content').style.display = 'none';
-        document.getElementById('success-msg').style.display = 'block';
-      } else {
-        btn.textContent = 'Send me the resources →';
-        btn.disabled = false;
-        alert('Something went wrong — please try again.');
-      }
-    } catch {
-      btn.textContent = 'Send me the resources →';
-      btn.disabled = false;
-      alert('Something went wrong — please try again.');
-    }
+    // Let the form submit into the hidden iframe, then show success
+    setTimeout(function() {
+      document.getElementById('form-content').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    }, 1500);
   });
 </script>
 </body>

@@ -722,7 +722,9 @@
 <div class="newsletter" id="newsletter">
   <h2>Stay Up to Date</h2>
   <p>New resources, webinar announcements, and literacy leadership insights — delivered to your inbox.</p>
-  <form class="newsletter-form" action="https://formspree.io/f/xpqypleo" method="POST">
+  <iframe name="hidden-newsletter" style="display:none"></iframe>
+  <form class="newsletter-form" action="https://script.google.com/macros/s/AKfycbylNy2SUrdRbA7XfRnF81QyMkqBnXCjgdKCVFqgyV2HGfJiyEAL-6WSb9h7qbCLfno0zw/exec" method="POST" target="hidden-newsletter">
+    <input type="hidden" name="form_type" value="newsletter">
     <input type="email" name="email" placeholder="Your email address" required>
     <button type="submit">Subscribe</button>
   </form>
@@ -768,5 +770,14 @@
   });
 </script>
 
+<script>
+document.querySelectorAll('.newsletter-form').forEach(function(form) {
+  form.addEventListener('submit', function() {
+    setTimeout(function() {
+      form.innerHTML = '<p style="color:#ffffff;font-size:1rem;font-weight:600;">&#10003; You're subscribed! Check your inbox for a welcome email.</p>';
+    }, 800);
+  });
+});
+</script>
 </body>
 </html>
