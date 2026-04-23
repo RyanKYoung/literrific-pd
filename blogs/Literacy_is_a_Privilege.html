@@ -169,6 +169,26 @@
     article p { font-size: 1rem; }
     .pullquote { margin-left: 0; }
   }
+  .share-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--charcoal); padding: .75rem 2rem;
+    display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; z-index: 100;
+  }
+  .share-label { font-size: .85rem; color: rgba(255,255,255,.6); font-weight: 600; }
+  .share-btn {
+    font-family: 'Geologica', sans-serif; font-size: .8rem; font-weight: 600;
+    padding: .4rem 1rem; border-radius: 5px; text-decoration: none;
+    transition: opacity .15s;
+  }
+  .share-btn:hover { opacity: .8; }
+  .share-btn.twitter  { background: #000; color: #fff; }
+  .share-btn.linkedin { background: #0a66c2; color: #fff; }
+  .share-btn.facebook { background: #1877f2; color: #fff; }
+  .share-btn.back     { background: var(--teal); color: var(--white); margin-left: auto; }
+  @media (max-width: 640px) {
+    .share-bar { gap: 8px; }
+    .share-btn.back { margin-left: 0; }
+  }
 </style>
 </head>
 <body>
@@ -206,6 +226,21 @@
 
   <p class="closing">It is time literacy was a human right, not a privilege.</p>
 </article>
+
+<div class="share-bar">
+  <span class="share-label">Share this article:</span>
+  <a id="share-twitter"  href="#" target="_blank" rel="noopener" class="share-btn twitter">&#x1D54F; / Twitter</a>
+  <a id="share-linkedin" href="#" target="_blank" rel="noopener" class="share-btn linkedin">LinkedIn</a>
+  <a id="share-facebook" href="#" target="_blank" rel="noopener" class="share-btn facebook">Facebook</a>
+  <a href="../resources.html" class="share-btn back">&#8592; Back to Resources</a>
+</div>
+<script>
+  var url   = encodeURIComponent(window.location.href);
+  var title = encodeURIComponent(document.title);
+  document.getElementById('share-twitter').href  = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + title;
+  document.getElementById('share-linkedin').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + url;
+  document.getElementById('share-facebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+</script>
 
 </body>
 </html>
