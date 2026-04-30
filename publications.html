@@ -341,6 +341,32 @@
   }
 
   /* ── Responsive ── */
+  .books-section-break {
+    grid-column: 1 / -1;
+    padding: 2rem 0 .5rem;
+    border-top: 2px solid var(--gray-border);
+  }
+  .books-section-break h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--charcoal);
+  }
+  .book-cover-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--tan-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Lora', serif;
+    font-size: .85rem;
+    color: var(--muted);
+    line-height: 1.5;
+    border-bottom: 1px solid var(--gray-border);
+  }
+
   @media (max-width: 768px) {
     .books-grid { grid-template-columns: repeat(2, 1fr); }
   }
@@ -377,8 +403,8 @@
 <!-- Page Header -->
 <div class="page-header">
   <span class="section-label">Research &amp; Practice</span>
-  <h1>Books by <em>Dr. Chase Young</em></h1>
-  <p>Evidence-based titles on reading fluency, the Science of Reading, and structured literacy — available for individual purchase or as professional development book studies.</p>
+  <h1>Books by <em>Our Team</em></h1>
+  <p>Evidence-based titles on reading fluency, the Science of Reading, structured literacy, and content-area reading — by our facilitators, available for individual purchase or as professional development book studies.</p>
 </div>
 
 <!-- Books Grid -->
@@ -496,6 +522,57 @@
         <p class="book-meta">MDPI · Free digital access</p>
         <p class="book-desc">A scholarly collection addressing reading fluency as a critical competency for full reading proficiency — available as a free open-access digital resource.</p>
         <a href="https://www.mdpi.com/books/book/3337" target="_blank" rel="noopener" class="book-link">Access Free →</a>
+      </div>
+    </article>
+
+    <!-- Section break: Facilitator books -->
+    <div class="books-section-break">
+      <h2>By Our Facilitators</h2>
+    </div>
+
+    <!-- Seth Parsons: Accelerating Learning Recovery -->
+    <article class="book-card">
+      <img class="book-cover"
+           src="https://www.guilford.com/covers/9781462552283.jpg"
+           alt="Accelerating Learning Recovery for All Students cover"
+           loading="lazy">
+      <div class="book-body">
+        <span class="book-badge">Literacy Recovery</span>
+        <h3>Accelerating Learning Recovery for All Students</h3>
+        <p class="book-authors">Margaret Vaughn · Seth A. Parsons</p>
+        <p class="book-meta">Guilford Press · 2023</p>
+        <p class="book-desc">Core principles for getting literacy growth back on track — covering schoolwide action teams, MTSS, community partnerships, and evidence-based recovery strategies.</p>
+        <a href="https://www.guilford.com/books/Accelerating-Learning-Recovery-for-All-Students/Vaughn-Parsons/9781462552283" target="_blank" rel="noopener" class="book-link">Get a Copy →</a>
+      </div>
+    </article>
+
+    <!-- Seth Parsons: Principles of Effective Literacy Instruction -->
+    <article class="book-card">
+      <img class="book-cover"
+           src="https://www.guilford.com/covers/9781462546046.jpg"
+           alt="Principles of Effective Literacy Instruction cover"
+           loading="lazy">
+      <div class="book-body">
+        <span class="book-badge">Science of Reading</span>
+        <h3>Principles of Effective Literacy Instruction, Grades K–5</h3>
+        <p class="book-authors">Edited by Seth A. Parsons · Margaret Vaughn</p>
+        <p class="book-meta">Guilford Press · 2021 · Foreword by Nell K. Duke</p>
+        <p class="book-desc">Twenty-two concise chapters offering practical, research-backed strategies for K–5 literacy instruction. Foreword by Nell K. Duke.</p>
+        <a href="https://www.guilford.com/books/Principles-of-Effective-Literacy-Instruction-Grades-K-5/Parsons-Vaughn/9781462546046" target="_blank" rel="noopener" class="book-link">Get a Copy →</a>
+      </div>
+    </article>
+
+    <!-- Patricia Durham: Becoming Fluent in the Language of Content -->
+    <article class="book-card">
+      <div class="book-cover book-cover-placeholder">
+        <span>KendallHunt<br>2016</span>
+      </div>
+      <div class="book-body">
+        <span class="book-badge">Content Literacy</span>
+        <h3>Becoming Fluent in the Language of Content</h3>
+        <p class="book-authors">Linda Haas · Patricia Durham · Jill Williams</p>
+        <p class="book-meta">KendallHunt Publishing · 2016</p>
+        <p class="book-desc">Developing strategic readers as critical consumers of information — supporting content-area literacy across subject areas and grade levels.</p>
       </div>
     </article>
 

@@ -322,83 +322,6 @@
   }
   .service-link:hover { gap: .55rem; }
 
-  /* ── Research Partner ── */
-  .expert { background: var(--white); }
-  .expert-grid {
-    display: grid;
-    grid-template-columns: 420px 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-  .expert-photo-wrap {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    aspect-ratio: 4/5;
-    box-shadow: 0 8px 40px rgba(0,0,0,.12);
-  }
-  .expert-photo-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-  }
-  .expert-photo-badge {
-    position: absolute;
-    bottom: 1.25rem;
-    left: 1.25rem;
-    right: 1.25rem;
-    background: rgba(26,31,46,.82);
-    backdrop-filter: blur(6px);
-    border-radius: 12px;
-    padding: .85rem 1.1rem;
-    color: var(--white);
-  }
-  .expert-photo-badge strong {
-    display: block;
-    font-family: 'Lora', serif;
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: .15rem;
-  }
-  .expert-photo-badge span {
-    font-size: .8rem;
-    color: rgba(255,255,255,.72);
-    line-height: 1.4;
-  }
-  .expert-content { }
-  .expert-content h2 { margin-bottom: .85rem; }
-  .expert-bio {
-    font-size: .97rem;
-    color: var(--muted);
-    line-height: 1.75;
-    margin-bottom: 1.75rem;
-  }
-  .expert-creds {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: .65rem;
-    margin-bottom: 2rem;
-  }
-  .expert-creds li {
-    display: flex;
-    align-items: center;
-    gap: .75rem;
-    font-size: .9rem;
-    color: var(--text);
-    font-weight: 500;
-  }
-  .expert-creds li::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--teal);
-    flex-shrink: 0;
-  }
-
   /* ── Facilitators ── */
   .facilitators-section { background: #004035; padding: 3rem 0; }
   .facilitators-callout {
@@ -433,6 +356,61 @@
   .facilitators-vibe { color: var(--teal) !important; font-style: italic; }
   @media (max-width: 600px) {
     .facilitators-callout { flex-direction: column; gap: 1rem; padding: 1.5rem; }
+  }
+
+  .facilitator-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+  .facilitator-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .facilitator-card img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .facilitator-info {
+    padding: 1rem 1.1rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .facilitator-info strong {
+    font-family: 'Lora', serif;
+    font-size: .95rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .facilitator-info span {
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--teal-light);
+    opacity: 0.8;
+  }
+  .facilitator-info p {
+    font-size: .78rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.35rem;
+    margin-bottom: 0;
+  }
+  @media (max-width: 1000px) {
+    .facilitator-cards { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .facilitator-cards { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 400px) {
+    .facilitator-cards { grid-template-columns: 1fr; }
   }
 
   /* ── Newsletter ── */
@@ -862,8 +840,6 @@
   /* ── Responsive ── */
   @media (max-width: 900px) {
     .services-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
-    .expert-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .expert-photo-wrap { max-width: 380px; margin: 0 auto; }
     .approach-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .approach-visual { order: -1; }
     .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
@@ -975,38 +951,6 @@
   </div>
 </section>
 
-<!-- Research Partner -->
-<section class="expert">
-  <div class="container">
-    <div class="expert-grid">
-      <div class="expert-photo-wrap">
-        <img src="images/chase-young.avif" alt="Dr. Chase Young">
-        <div class="expert-photo-badge">
-          <strong>Dr. Chase Young</strong>
-          <span>Sam Houston State University</span>
-        </div>
-      </div>
-      <div class="expert-content">
-        <span class="section-label">Research Partner</span>
-        <h2>The Science Behind<br><em>Every Session</em></h2>
-        <p class="expert-bio">Dr. Chase Young began his career as a 2nd-grade teacher in Title I schools before earning his PhD from the University of North Texas (2012). He is Professor of Literacy at Sam Houston State University, Chief Literacy Officer at LiTerrific, and Editor of <em>Reading Research Quarterly</em> (2026–2030). His classroom roots are the foundation of everything LiTerrific does.</p>
-        <p class="expert-bio">Dr. Young's research on reading fluency, literacy intervention, and evidence-based instruction has shaped policy and practice nationally. He is Series Editor for DK Publishing / Penguin Random House's <em>The Science of Reading</em> series and a collaborator on a $2.8M NSF grant focused on literacy transformation at Hispanic-Serving Institutions. Every LiTerrific Professional Development program is built on his published, peer-reviewed work.</p>
-        <ul class="expert-creds">
-          <li>Professor of Literacy · Sam Houston State University</li>
-          <li>Editor, <em>Reading Research Quarterly</em> (2026–2030)</li>
-          <li>Series Editor, <em>The Science of Reading</em> · DK Publishing / Penguin Random House</li>
-          <li>Author of 7 books on reading fluency and the Science of Reading — <a href="publications.html" style="color:var(--teal);font-weight:600;">view titles →</a></li>
-          <li>A.B. Herr Award · Diane Lapp &amp; James Flood Professional Collaborator Award · Jack Cassidy Award</li>
-        </ul>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-          <a href="contact.html" class="btn-primary">Work With Us →</a>
-          <a href="https://thebestclass.org" target="_blank" class="btn-outline">thebestclass.org ↗</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Facilitators -->
 <section class="facilitators-section">
   <div class="container">
@@ -1019,6 +963,56 @@
         <p class="facilitators-vibe">This isn't sit-and-get. Expect movement, real classroom demonstrations, and more than a few laughs — alongside the research.</p>
       </div>
     </div>
+
+    <div class="facilitator-cards">
+
+      <div class="facilitator-card">
+        <img src="images/chase-young-shsu.webp" alt="Dr. Chase Young">
+        <div class="facilitator-info">
+          <strong>Dr. Chase Young</strong>
+          <span>Professor of Literacy · Sam Houston State University</span>
+          <p>Editor, <em>Reading Research Quarterly</em>. Series Editor, <em>The Science of Reading</em> (DK/PRH). A.B. Herr Award. Author of 7 books on reading fluency and evidence-based instruction.</p>
+        </div>
+      </div>
+
+      <div class="facilitator-card">
+        <img src="images/parsons-seth-headshot.jpg" alt="Dr. Seth A. Parsons">
+        <div class="facilitator-info">
+          <strong>Dr. Seth A. Parsons</strong>
+          <span>Professor · George Mason University</span>
+          <p>Co-editor, <em>Journal of Literacy Research</em>. Former president, ALER. AERA 2019 Review of Research Award. Research: motivation to read, student engagement, adaptive teaching.</p>
+        </div>
+      </div>
+
+      <div class="facilitator-card">
+        <img src="images/downs-jake-headshot.jpg" alt="Jake Downs">
+        <div class="facilitator-info">
+          <strong>Jake Downs</strong>
+          <span>Assistant Professor · Utah State University</span>
+          <p>Emerging Scholar Fellow, Reading Hall of Fame (2024–2026). J.D. Estill Alexander Future Leaders in Literacy Award, ALER. Research: oral reading fluency, paired reading, text complexity, teacher team effectiveness.</p>
+        </div>
+      </div>
+
+      <div class="facilitator-card">
+        <img src="images/durham-patricia.webp" alt="Dr. Patricia Durham">
+        <div class="facilitator-info">
+          <strong>Dr. Patricia Durham</strong>
+          <span>Professor · Sam Houston State University</span>
+          <p>School of Teaching and Learning. Literacy instruction, strategic reading, and content-area literacy. Co-author, <em>Becoming Fluent in the Language of Content</em> (KendallHunt, 2016).</p>
+        </div>
+      </div>
+
+      <div class="facilitator-card">
+        <img src="images/parsons-allison.jpg" alt="Dr. Allison Ward">
+        <div class="facilitator-info">
+          <strong>Dr. Allison Ward</strong>
+          <span>Associate Professor · George Mason University</span>
+          <p>Director, Elizabeth G. Sturtevant Center for Literacy. Research: early literacy, vocabulary and academic language development, literacy coaching, and culturally relevant teaching. Former K teacher in Title I schools.</p>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
