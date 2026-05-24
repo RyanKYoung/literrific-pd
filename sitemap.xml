@@ -65,6 +65,14 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Landing pages -->
+  <url>
+    <loc>https://literacylive.org/summer-reading-2026.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Guides -->
   <url>
     <loc>https://literacylive.org/guides/edu-1-synergistic-phonics.html</loc>
