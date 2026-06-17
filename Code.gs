@@ -13,7 +13,7 @@
 
 // ── Configuration ─────────────────────────────────────────────────────────────
 
-var SHEET_ID  = '1hYmPwbsipdIkz34VSmrLskA7HHxBuxx_x5spRfhOaG4';
+var LEADS_SHEET_ID  = '1hYmPwbsipdIkz34VSmrLskA7HHxBuxx_x5spRfhOaG4';
 var FROM_NAME = 'Chase Young & the LiTerrific Team';
 
 var RESOURCE_LINKS = {
@@ -45,7 +45,7 @@ function corsResponse(content) {
 }
 
 function getSheet() {
-  return SpreadsheetApp.openById(SHEET_ID).getSheetByName('leads');
+  return SpreadsheetApp.openById(LEADS_SHEET_ID).getSheetByName('leads');
 }
 
 function emailHeader() {
