@@ -21,8 +21,8 @@ var RESOURCE_LINKS = {
   'read-to-impress':     'PASTE_READ_TO_IMPRESS_DRIVE_LINK_HERE',
   'synergistic-lessons': 'PASTE_SYNERGISTIC_LESSONS_DRIVE_LINK_HERE',
   'fluency':             'PASTE_FLUENCY_DRIVE_LINK_HERE',
-  'keynote':             'PASTE_KEYNOTE_DRIVE_LINK_HERE',
-  'building-fluency':    'PASTE_BUILDING_FLUENCY_DRIVE_LINK_HERE',
+  'keynote':             'https://drive.google.com/file/d/1yfV25uAFZmUcjPfebQdZwo_Lrn66WorW/view?usp=sharing',
+  'building-fluency':    'https://drive.google.com/file/d/11olBhedaFeR73TlSQfhac6Zl9Pj9X_3H/view?usp=sharing',
   'pd':                  'https://literacylive.org/contact.html'
 };
 
@@ -313,24 +313,18 @@ function sendSignupEmail(name, email, referral) {
       '<p style="font-size:.92rem;margin-top:24px;">— Chase</p>';
 
   } else if (referral === 'keynote') {
-    subject = 'Your Keynote Presentation — LiTerrific';
+    subject = 'Slides from My Session — Dr. Chase Young';
     body =
-      '<p style="font-size:1rem;margin-bottom:16px;">' + greeting(name) + '</p>' +
-      '<p style="font-size:1rem;margin-bottom:16px;">Thanks for your interest in the keynote! ' +
-      'You can download the presentation using the link below.</p>' +
-      '<p style="font-size:1rem;margin-bottom:24px;"><a href="' + (RESOURCE_LINKS['keynote']) + '" style="color:#01826d;font-weight:600;">Download Keynote Presentation →</a></p>' +
-      '<p style="font-size:1rem;margin-bottom:16px;">If you have questions or your school or district is looking for professional development, we\'d love to connect.</p>' +
-      '<p style="font-size:.92rem;margin-top:24px;">— Chase Young &amp; the LiTerrific Team</p>';
+      '<p style="font-size:1rem;margin-bottom:16px;">Hi and thanks for coming to my session!</p>' +
+      '<p style="font-size:1rem;margin-bottom:24px;"><a href="' + (RESOURCE_LINKS['keynote']) + '" style="color:#01826d;font-weight:600;">You can find my slides here!</a></p>' +
+      '<p style="font-size:.92rem;margin-top:24px;">Dr. Chase Young</p>';
 
   } else if (referral === 'building-fluency') {
-    subject = 'Building Reading Fluency — LiTerrific';
+    subject = 'Session Materials — Dr. Chase Young';
     body =
-      '<p style="font-size:1rem;margin-bottom:16px;">' + greeting(name) + '</p>' +
-      '<p style="font-size:1rem;margin-bottom:16px;">Here\'s your copy of <strong>Building Reading Fluency</strong>. ' +
-      'We hope it\'s a useful resource for your classroom or school.</p>' +
-      '<p style="font-size:1rem;margin-bottom:24px;"><a href="' + (RESOURCE_LINKS['building-fluency']) + '" style="color:#01826d;font-weight:600;">Download Building Reading Fluency →</a></p>' +
-      '<p style="font-size:1rem;margin-bottom:16px;">If your team is looking for deeper support around fluency instruction — from whole-class routines to targeted intervention — we\'d love to keep the conversation going.</p>' +
-      '<p style="font-size:.92rem;margin-top:24px;">— Chase Young &amp; the LiTerrific Team</p>';
+      '<p style="font-size:1rem;margin-bottom:16px;">Hi and thanks for coming!</p>' +
+      '<p style="font-size:1rem;margin-bottom:24px;"><a href="' + (RESOURCE_LINKS['building-fluency']) + '" style="color:#01826d;font-weight:600;">Click here to get the materials from my session.</a></p>' +
+      '<p style="font-size:.92rem;margin-top:24px;">Dr. Chase Young</p>';
 
   } else if (referral === 'pd') {
     subject = 'Your Professional Development Request';
