@@ -21,6 +21,8 @@ var RESOURCE_LINKS = {
   'read-to-impress':     'PASTE_READ_TO_IMPRESS_DRIVE_LINK_HERE',
   'synergistic-lessons': 'PASTE_SYNERGISTIC_LESSONS_DRIVE_LINK_HERE',
   'fluency':             'PASTE_FLUENCY_DRIVE_LINK_HERE',
+  'keynote':             'PASTE_KEYNOTE_DRIVE_LINK_HERE',
+  'building-fluency':    'PASTE_BUILDING_FLUENCY_DRIVE_LINK_HERE',
   'pd':                  'https://literacylive.org/contact.html'
 };
 
@@ -29,6 +31,8 @@ var RESOURCE_LABELS = {
   'read-to-impress':     'Read Two Impress Resources',
   'synergistic-lessons': 'Creating Synergistic Lessons',
   'fluency':             'Performance Based Fluency',
+  'keynote':             'Keynote Presentation',
+  'building-fluency':    'Building Reading Fluency',
   'pd':                  'Professional Development Information'
 };
 
@@ -307,6 +311,26 @@ function sendSignupEmail(name, email, referral) {
       '<p style="font-size:1rem;margin-bottom:24px;">And if your school or district wants help building a clear, practical fluency plan — from intervention to whole-class routines — I\'d love to keep the conversation going.</p>' +
       '<p style="font-size:1rem;margin-bottom:24px;">Thanks again for the work you\'re doing for readers across Nevada. Keep going. It matters.</p>' +
       '<p style="font-size:.92rem;margin-top:24px;">— Chase</p>';
+
+  } else if (referral === 'keynote') {
+    subject = 'Your Keynote Presentation — LiTerrific';
+    body =
+      '<p style="font-size:1rem;margin-bottom:16px;">' + greeting(name) + '</p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">Thanks for your interest in the keynote! ' +
+      'You can download the presentation using the link below.</p>' +
+      '<p style="font-size:1rem;margin-bottom:24px;"><a href="' + (RESOURCE_LINKS['keynote']) + '" style="color:#01826d;font-weight:600;">Download Keynote Presentation →</a></p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">If you have questions or your school or district is looking for professional development, we\'d love to connect.</p>' +
+      '<p style="font-size:.92rem;margin-top:24px;">— Chase Young &amp; the LiTerrific Team</p>';
+
+  } else if (referral === 'building-fluency') {
+    subject = 'Building Reading Fluency — LiTerrific';
+    body =
+      '<p style="font-size:1rem;margin-bottom:16px;">' + greeting(name) + '</p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">Here\'s your copy of <strong>Building Reading Fluency</strong>. ' +
+      'We hope it\'s a useful resource for your classroom or school.</p>' +
+      '<p style="font-size:1rem;margin-bottom:24px;"><a href="' + (RESOURCE_LINKS['building-fluency']) + '" style="color:#01826d;font-weight:600;">Download Building Reading Fluency →</a></p>' +
+      '<p style="font-size:1rem;margin-bottom:16px;">If your team is looking for deeper support around fluency instruction — from whole-class routines to targeted intervention — we\'d love to keep the conversation going.</p>' +
+      '<p style="font-size:.92rem;margin-top:24px;">— Chase Young &amp; the LiTerrific Team</p>';
 
   } else if (referral === 'pd') {
     subject = 'Your Professional Development Request';
