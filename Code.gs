@@ -153,29 +153,32 @@ function sendWelcomeEmail(email) {
 // ── Quote / contact handler ───────────────────────────────────────────────────
 
 function handleQuote(params, multiParams) {
-  var name     = params.name     || '';
-  var email    = params.email    || '';
-  var role     = params.role     || '';
-  var district = params.district || '';
-  var state    = params.state    || '';
-  var teachers = params.teachers || '';
-  var message  = params.message  || '';
-  var grades   = (multiParams.grades   || []).join(', ');
-  var services = (multiParams.services || []).join(', ');
+  var name      = params.name     || '';
+  var email     = params.email    || '';
+  var role      = params.role     || '';
+  var district  = params.district || '';
+  var state     = params.state    || '';
+  var teachers  = params.teachers || '';
+  var message   = params.message  || '';
+  var services  = (multiParams.services  || []).join(', ');
+  var interests = (multiParams.interests || []).join(', ');
 
   var details = [
-    role     ? 'Role: ' + role         : '',
-    grades   ? 'Grades: ' + grades     : '',
-    services ? 'Services: ' + services : '',
-    teachers ? 'Teachers: ' + teachers : '',
-    message  ? 'Notes: ' + message     : ''
+    role      ? 'Role: '      + role      : '',
+    services  ? 'Services: '  + services  : '',
+    interests ? 'Interests: ' + interests : '',
+    teachers  ? 'Teachers: '  + teachers  : '',
+    message   ? 'Notes: '     + message   : ''
   ].filter(Boolean).join(' | ');
 
-  var sheet = getSheet();
-  ensureHeader(sheet);
-  sheet.appendRow([new Date(), 'quote', name, email, details, 'contact-form', '', district, state]);
-
+  // Email first — sheet write must not block the confirmation
   sendQuoteEmail(name, email, district);
+
+  try {
+    var sheet = getSheet();
+    ensureHeader(sheet);
+    sheet.appendRow([new Date(), 'quote', name, email, details, 'contact-form', '', district, state]);
+  } catch(e) {}
 }
 
 function sendQuoteEmail(name, email, district) {
@@ -204,14 +207,17 @@ function handleSignup(params) {
   var updatesOptin = params.updates_optin   || 'no';
   var source       = params.source          || 'signup-page';
 
-  var details = RESOURCE_LABELS[referral] || referral;
+  var details     = RESOURCE_LABELS[referral] || referral;
   var stayUpdated = updatesOptin === 'yes' ? 'Yes' : 'No';
 
-  var sheet = getSheet();
-  ensureHeader(sheet);
-  sheet.appendRow([new Date(), 'signup', name, email, details, source, stayUpdated, '', '']);
-
+  // Email first — sheet write must not block the confirmation
   sendSignupEmail(name, email, referral);
+
+  try {
+    var sheet = getSheet();
+    ensureHeader(sheet);
+    sheet.appendRow([new Date(), 'signup', name, email, details, source, stayUpdated, '', '']);
+  } catch(e) {}
 }
 
 function sendSignupEmail(name, email, referral) {
