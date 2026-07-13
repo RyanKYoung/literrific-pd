@@ -41,6 +41,12 @@
 
   <!-- Blog posts -->
   <url>
+    <loc>https://literacylive.org/blogs/chase-young-literacy-pet-peeves.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://literacylive.org/blogs/literacylive-classroom-team.html</loc>
     <lastmod>2026-07-13</lastmod>
     <changefreq>yearly</changefreq>
