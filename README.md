@@ -2,7 +2,7 @@
 
 Static HTML site targeting teachers and school district leadership. No auth, no payments — conversion is a contact/quote form.
 
-**Live site:** literacylive.org (deploy via Netlify — not yet configured)
+**Live site:** literacylive.org
 **Repo:** https://github.com/RyanKYoung/literrific-pd
 
 ---
@@ -13,7 +13,10 @@ Static HTML site targeting teachers and school district leadership. No auth, no 
 |------|-------------|
 | `index.html` | Landing page — hero, photo strip, stats, services, Research Partner (Dr. Chase Young), approach, testimonials, resources preview, CTA strip |
 | `resources.html` | Blog & webinar library with JS filter tabs (All / Articles / Webinar Recordings / Guides) |
-| `contact.html` | Quote request form — submits to Formspree, inline success state |
+| `gallery.html` | Professional development photo gallery with accessible lightbox |
+| `publications.html` | Books by the LiTerrific facilitators and collaborators |
+| `contact.html` | Quote request form — submits to the production Apps Script, inline success state |
+| `signup.html` | Resource request form routed through the same Apps Script |
 
 ## Images
 
@@ -30,9 +33,11 @@ All images are stored locally in `images/`:
 ## Tech Stack
 
 - Plain HTML/CSS/JS — no framework, no npm, no build step
-- **Forms:** Formspree
-  - Contact form: `contact.html` → replace `PLACEHOLDER` in form action with real Formspree endpoint
-  - Newsletter: `resources.html` → same, replace `PLACEHOLDER`
+- **Forms:** Google Apps Script
+  - Quote forms use `form_type=quote`
+  - Newsletter forms use `form_type=newsletter`
+  - Resource requests omit `form_type` and are handled as signup requests
+  - The deployed endpoint and server-side handlers are documented in `Code.gs`
 - **Fonts:** Google Fonts — Geologica + Lora + Quattrocento
 
 ## Design System
@@ -57,15 +62,10 @@ python3 -m http.server 3001
 ```
 Forward port 3001 in VS Code Ports tab (distinct from LFC Reading on port 3000).
 
-## Formspree Setup (required before going live)
+## Form handling
 
-1. Sign up at formspree.io
-2. Create a new form, set notification email to info@literrific.com
-3. Copy the endpoint URL (e.g. `https://formspree.io/f/xabc1234`)
-4. Replace `PLACEHOLDER` in `contact.html` and `resources.html`
+All production forms post to the deployed Apps Script endpoint in `Code.gs` using hidden iframes so visitors remain on the current page. Preserve the endpoint, `form_type` values, and field names when changing form presentation. The Apps Script sends confirmation emails and records leads in the configured Google Sheet.
 
 ## Pending
 
-- Replace Formspree PLACEHOLDER with real endpoint
 - Fill in real testimonial names, roles, and quotes
-- Deploy to Netlify and point literacylive.org domain
