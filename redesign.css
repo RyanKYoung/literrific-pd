@@ -68,7 +68,7 @@ em { font-weight: 400; }
 .hero h1 { max-width: 760px; margin: 28px 0 0; font-size: clamp(4.45rem,6.8vw,8rem); font-weight: 400; letter-spacing: -.055em; line-height: .82; text-wrap: balance; }
 .hero h1 em { display: block; margin-top: .12em; color: var(--teal-deep); }
 .hero-copy { max-width: 570px; margin: 36px 0 0; color: rgba(16,26,50,.7); font-size: clamp(1rem,1.25vw,1.18rem); line-height: 1.62; }
-.hero-actions { display: flex; align-items: center; gap: 34px; margin-top: 34px; }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 34px; margin-top: 34px; }
 .hero-flightline { display: flex; width: min(460px,100%); align-items: center; margin-top: 48px; color: var(--teal-deep); }
 .hero-flightline span { flex: 1; border-top: 1px dashed rgba(16,26,50,.28); }
 .hero-flightline i { margin-left: -2px; font-size: 1.1rem; font-style: normal; transform: rotate(-10deg); }
